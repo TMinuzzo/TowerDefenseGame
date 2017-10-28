@@ -1,0 +1,3 @@
+[submodule "mlpreport"]
+	path = mlpreport
+	url = https://github.com/pietrasofia/mlpreport.git
