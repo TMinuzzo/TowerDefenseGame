@@ -1,2 +1,5 @@
 # TowerDefenseGame
-Trabalho final para a disciplina Modelos de Linguagem de programação
+
+##Make sure you have installed:
+*Visual Studio 2015
+*Monogame 3.6
