@@ -9,8 +9,16 @@ Assets\Wide310x150Logo.scale-200.png
 MonoGame2D.xr.xml
 Content\background.png
 Content\background.xnb
+Content\black_enemy.xnb
 Content\GameState.xnb
-Content\Score.xnb
+Content\grass.xnb
+Content\orange_cute_enemy.xnb
+Content\orange_onion_enemy.xnb
+Content\path.xnb
 Content\start-splash.xnb
+Content\black_enemy.png
+Content\orange_cute_enemy.png
+Content\orange_onion_enemy.png
 Content\start-splash.png
+Content\tower.png
 Properties\Default.rd.xml

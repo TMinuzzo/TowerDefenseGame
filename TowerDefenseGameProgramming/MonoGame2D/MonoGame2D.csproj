@@ -119,7 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\background.png" />
+    <Content Include="Content\black_enemy.png" />
+    <Content Include="Content\orange_cute_enemy.png" />
+    <Content Include="Content\orange_onion_enemy.png" />
     <Content Include="Content\start-splash.png" />
+    <Content Include="Content\tower.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

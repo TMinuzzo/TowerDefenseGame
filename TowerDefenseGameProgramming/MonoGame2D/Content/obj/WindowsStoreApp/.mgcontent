@@ -4,16 +4,11 @@
   <Platform>WindowsStoreApp</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/TesteClaw/Desktop/GIT/frogger/FroggerGame/MonoGame2D/Content/GameState.spritefont</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/background.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/frooger.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/game-over.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/GameState.spritefont</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/green_cart.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/purple_cart.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/red_cart.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/Score.spritefont</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/start-splash.png</File>
-    <File>D:/Trabalhos/frogger/FroggerGame/MonoGame2D/Content/win.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/background.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/black_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/GameState.spritefont</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_cute_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_onion_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/start-splash.png</File>
   </SourceFiles>
 </SourceFileCollection>

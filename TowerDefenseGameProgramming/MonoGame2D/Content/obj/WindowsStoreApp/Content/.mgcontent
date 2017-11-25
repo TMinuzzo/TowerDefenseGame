@@ -4,9 +4,11 @@
   <Platform>WindowsStoreApp</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGameProggramming/TowerDefenseGameProgramming/MonoGame2D/Content/background.png</File>
-    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGameProggramming/TowerDefenseGameProgramming/MonoGame2D/Content/GameState.spritefont</File>
-    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGameProggramming/TowerDefenseGameProgramming/MonoGame2D/Content/Score.spritefont</File>
-    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGameProggramming/TowerDefenseGameProgramming/MonoGame2D/Content/start-splash.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/background.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/black_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/GameState.spritefont</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_cute_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_onion_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/start-splash.png</File>
   </SourceFiles>
 </SourceFileCollection>

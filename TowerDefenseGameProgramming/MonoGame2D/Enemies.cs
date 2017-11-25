@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace MonoGame2D
 {
-    class Enemies
+    public class Enemies
     {
+
         public Texture2D texture
         {
             get;
@@ -42,25 +43,41 @@ namespace MonoGame2D
             get;
             set;
         }
+        // Aceleração em x do obstaculo
+        public float dX
+        {
+            get;
+            set;
+        }
 
+        // Aceleração em y do obstaculo
+        public float dY
+        {
+            get;
+            set;
+        }
+     
         // Construtor da classe
         public Enemies(GraphicsDevice graphicsDevice, string textureName, float scale)
         {
+
             this.scale = scale;
             var stream = TitleContainer.OpenStream(textureName);
             texture = Texture2D.FromStream(graphicsDevice, stream);
         }
 
-        // Função de atualização do estado do inimigo
         public void Update(float elapsedTime)
         {
-
+            this.x = this.x + this.dX * 3;
+            this.y = this.y + this.dY * 3;
+       
         }
 
         // Renderiza o(s) inimigo(s)
         public void Draw(SpriteBatch spriteBatch)
         {
-            // Determina posição do inimigo
+           
+            // Determina posição dos inimigos
             Vector2 spritePosition = new Vector2(this.x, this.y);
             // Desenha o sprite
             spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);

@@ -8,33 +8,79 @@ using Windows.UI.ViewManagement;
 
 namespace MonoGame2D
 {
+
+    static class Constants
+    {
+        // Constante de diretorio ativo
+        public const string directory = "Content";
+
+        // Contantes de movimentação dos inimigos
+        public const float acelerationFactor = (float)0.25; 
+        public const float decAceleration = (float)0.2;
+        public const float rigthAceleration = 1; // Direção da aceleração 
+        public const float angleObstacleToRigth = 0; // Ângulo da aceleração
+        // Constantes de controle de loop do jogo junto a atualização de obstaculos
+        
+
+        // Constantes de valores default de vida,nivel, pontos e etc do jogo
+        public const int initialLives = 5;
+        public const int initialLevel = 0;
+        public const int initialScore = 0;
+        public const int maxLevel = 8;
+
+        // Constantes de nome de arquivos a serem caregados
+        public const string towerSprite = "Content/tower.png";
+        public const string orangeCuteSprite = "Content/orange_cute_enemy.png";
+        public const string orangeOnionSprite = "Content/orange_onion_enemy.png";
+        public const string blackEnemySprites = "Content/black_enemy.png";
+        public const string backgroundSprite = "background";
+        public const string startSprite = "start-splash";
+
+    }
+
     public class Game1 : Game
     {
+        // Declaração de variaveis globias dentre a classe
+        // Variaveis de ambiente grafico
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        SpriteFont stateFont;
+        SpriteFont scoreFont;
+        Texture2D startGameSplash;
+        Texture2D background;
+        float scale;
+
+        // Variaveis de posicionamento
         float screenWidth;
         float screenHeight;
-        Texture2D background;
+
+        // Variaveis posicionamento angular e aceleração todas já iniializadas aqui
+        float angleToRight = Constants.angleObstacleToRigth;
+        float aceleretionToRigth = Constants.rigthAceleration;
+
+        // Variaveis de controle de estado de jogo
         bool gameStarted;
         bool gameOver;
         bool win;
         int score;
         int lives;
         int level;
-        SpriteFont stateFont;
+
+        // Variavel para geração ramdomica
         Random random;
-        SpriteFont scoreFont;
-        Texture2D startGameSplash;
-        List<float> screen = new List<float>();
-        List<int> lines = new List<int>();
+
+        // Declaração da lista de inimigos e torres
         List<Enemies> enemies = new List<Enemies>();
         List<Towers> towers = new List<Towers>();
 
+        // Fim da declaração de globais da classe
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+         
+            IsMouseVisible = true;
+            Content.RootDirectory = Constants.directory;
         }
 
         /* Método de inicialização */
@@ -55,8 +101,6 @@ namespace MonoGame2D
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
             screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
-            this.IsMouseVisible = false;
-
         }
 
         /* Método de carga de elementos externos */
@@ -67,14 +111,11 @@ namespace MonoGame2D
             /* Carrega texturas de do jogo */
             background = Content.Load<Texture2D>("background");
             startGameSplash = Content.Load<Texture2D>("start-splash");
-            //gameOverTexture = Content.Load<Texture2D>("game-over");
-            //winTexture = Content.Load<Texture2D>("win");
+ 
+            spawnNewObstacle();
+            float scale = ScaleToHighDPI(1.3f);
 
-            /* Carrega sprites do jogo */
-
-            /* Carrega estilo de fontes */
-            //stateFont = Content.Load<SpriteFont>("GameState");
-            //scoreFont = Content.Load<SpriteFont>("Score");
+          
         }
 
         /* Método de descarga de elementos externos */
@@ -87,7 +128,7 @@ namespace MonoGame2D
         {
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardHandler();
-
+            enemies[0].Update(elapsedTime);
             base.Update(gameTime);
         }
 
@@ -98,10 +139,9 @@ namespace MonoGame2D
 
             /* Inicializa o ambiente de operações de desenho na tela */
             spriteBatch.Begin();
-
-            /* Desenha o background carregado */
-            spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
-
+            spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White); 
+            enemies[0].Draw(spriteBatch);
+  
             /* Se o jogo ainda não começou, fica em tela de início */
             if (!gameStarted)
             {
@@ -113,8 +153,8 @@ namespace MonoGame2D
             else
             {
                 /* Desenhar aqui restante dos elementos do início do jogo: vidas, timer, pontuação */
-                spriteBatch.Draw(background, new Rectangle(0, 0,
-                  (int)screenWidth, (int)screenHeight), Color.White);
+                //spriteBatch.Draw(background, new Rectangle(0, 0,
+                // (int)screenWidth, (int)screenHeight), Color.Transparent);
             }
 
             spriteBatch.End();
@@ -176,8 +216,25 @@ namespace MonoGame2D
         /* Método de início do jogo */
         public void StartGame()
         {
+            enemies[0].x = 10;
+            enemies[0].y = (screenHeight / 3) - 50; //hardcoded, definir constante
 
         }
+        public void spawnNewObstacle()
+        {
+            //Instanciar aqui os tipos de inimigos, e calcular sua movimentação com base no mapa
+
+            Enemies crow;
+            crow = new Enemies(GraphicsDevice, "Content/black_enemy.png", ScaleToHighDPI(0.3f));
+
+            crow.x = -screenWidth / 17; //definir constante
+            crow.dX = (float)(aceleretionToRigth * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
+
+            crow.angle = 0; //angulo pra direita
+
+            enemies.Add(crow);
+        }
+
 
     }
 }
