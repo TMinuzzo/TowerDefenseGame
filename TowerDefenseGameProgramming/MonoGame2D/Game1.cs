@@ -35,6 +35,7 @@ namespace MonoGame2D
         public const string blackEnemySprites = "Content/black_enemy.png";
         public const string backgroundSprite = "background";
         public const string startSprite = "start-splash";
+		public const string heart = "heart";
 
     }
 
@@ -56,7 +57,7 @@ namespace MonoGame2D
 
         // Variaveis posicionamento angular e aceleração todas já iniializadas aqui
         float angleToRight = Constants.angleObstacleToRigth;
-        float aceleretionToRigth = Constants.rigthAceleration;
+        float acelerationToRigth = Constants.rigthAceleration;
 
         // Variaveis de controle de estado de jogo
         bool gameStarted;
@@ -70,8 +71,8 @@ namespace MonoGame2D
         Random random;
 
         // Declaração da lista de inimigos e torres
-        List<Enemies> enemies = new List<Enemies>();
-        List<Towers> towers = new List<Towers>();
+        List<Enemy> enemies = new List<Enemy>();
+        List<Tower> towers = new List<Tower>();
 
         // Fim da declaração de globais da classe
 
@@ -224,11 +225,11 @@ namespace MonoGame2D
         {
             //Instanciar aqui os tipos de inimigos, e calcular sua movimentação com base no mapa
 
-            Enemies crow;
-            crow = new Enemies(GraphicsDevice, "Content/black_enemy.png", ScaleToHighDPI(0.3f));
+            Enemy crow;
+            crow = new Enemy(GraphicsDevice, "Content/black_enemy.png", ScaleToHighDPI(0.3f));
 
             crow.x = -screenWidth / 17; //definir constante
-            crow.dX = (float)(aceleretionToRigth * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
+            crow.dX = (float)(acelerationToRigth * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
 
             crow.angle = 0; //angulo pra direita
 

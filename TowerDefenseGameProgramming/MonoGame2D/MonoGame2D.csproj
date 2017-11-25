@@ -100,13 +100,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Enemies.cs" />
+    <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Struct.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Towers.cs" />
+    <Compile Include="Classes\Tower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
