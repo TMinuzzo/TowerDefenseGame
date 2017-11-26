@@ -101,7 +101,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\Struct.cs" />
+    <Compile Include="Classes\Tiles.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +126,8 @@
     <Content Include="Content\orange_cute_enemy.png" />
     <Content Include="Content\orange_onion_enemy.png" />
     <Content Include="Content\start-splash.png" />
+    <Content Include="Content\Tile1.jpg" />
+    <Content Include="Content\Tile2.jpg" />
     <Content Include="Content\tower.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

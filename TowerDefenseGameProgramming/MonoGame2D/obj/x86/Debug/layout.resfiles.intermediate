@@ -19,13 +19,16 @@ Content\Content\orange_onion_enemy.xnb
 Content\Content\path.xnb
 Content\Content\start-splash.xnb
 Content\GameState.xnb
-Content\heart.xnb
 Content\orange_cute_enemy.xnb
 Content\orange_onion_enemy.xnb
 Content\start-splash.xnb
+Content\Tile1.xnb
+Content\Tile2.xnb
 Content\black_enemy.png
 Content\orange_cute_enemy.png
 Content\orange_onion_enemy.png
 Content\start-splash.png
+Content\Tile1.jpg
+Content\Tile2.jpg
 Content\tower.png
 Properties\Default.rd.xml

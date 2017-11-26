@@ -17,8 +17,8 @@ namespace MonoGame2D
         // Contantes de movimentação dos inimigos
         public const float acelerationFactor = (float)0.25; 
         public const float decAceleration = (float)0.2;
-        public const float rigthAceleration = 1; // Direção da aceleração 
-        public const float angleObstacleToRigth = 0; // Ângulo da aceleração
+        public const float rightAceleration = 1; // Direção da aceleração 
+        public const float angleObstacleToRight = 0; // Ângulo da aceleração
         // Constantes de controle de loop do jogo junto a atualização de obstaculos
         
 
@@ -33,9 +33,7 @@ namespace MonoGame2D
         public const string orangeCuteSprite = "Content/orange_cute_enemy.png";
         public const string orangeOnionSprite = "Content/orange_onion_enemy.png";
         public const string blackEnemySprites = "Content/black_enemy.png";
-        public const string backgroundSprite = "background";
         public const string startSprite = "start-splash";
-		public const string heart = "heart";
 
     }
 
@@ -50,14 +48,15 @@ namespace MonoGame2D
         Texture2D startGameSplash;
         Texture2D background;
         float scale;
+		Map map;
 
         // Variaveis de posicionamento
         float screenWidth;
         float screenHeight;
 
         // Variaveis posicionamento angular e aceleração todas já iniializadas aqui
-        float angleToRight = Constants.angleObstacleToRigth;
-        float acelerationToRigth = Constants.rigthAceleration;
+        float angleToRight = Constants.angleObstacleToRight;
+        float acelerationToRight = Constants.rightAceleration;
 
         // Variaveis de controle de estado de jogo
         bool gameStarted;
@@ -102,7 +101,17 @@ namespace MonoGame2D
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
             screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
-        }
+
+			map = new Map();
+
+			map.Generate(new int[,]{
+				{0,0,0,1},
+				{0,0,1,2},
+				{0,1,2,2},
+				{1,2,2,2},
+			}, 64);
+
+		}
 
         /* Método de carga de elementos externos */
         protected override void LoadContent()
@@ -110,13 +119,13 @@ namespace MonoGame2D
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             /* Carrega texturas de do jogo */
-            background = Content.Load<Texture2D>("background");
             startGameSplash = Content.Load<Texture2D>("start-splash");
  
-            spawnNewObstacle();
+            //spawnNewObstacle();
             float scale = ScaleToHighDPI(1.3f);
 
-          
+			Tiles.Content = Content;
+
         }
 
         /* Método de descarga de elementos externos */
@@ -129,7 +138,7 @@ namespace MonoGame2D
         {
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardHandler();
-            enemies[0].Update(elapsedTime);
+            //enemies[0].Update(elapsedTime);
             base.Update(gameTime);
         }
 
@@ -140,8 +149,8 @@ namespace MonoGame2D
 
             /* Inicializa o ambiente de operações de desenho na tela */
             spriteBatch.Begin();
-            spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White); 
-            enemies[0].Draw(spriteBatch);
+			// spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White); 
+            //enemies[0].Draw(spriteBatch);
   
             /* Se o jogo ainda não começou, fica em tela de início */
             if (!gameStarted)
@@ -153,10 +162,12 @@ namespace MonoGame2D
             }
             else
             {
-                /* Desenhar aqui restante dos elementos do início do jogo: vidas, timer, pontuação */
-                //spriteBatch.Draw(background, new Rectangle(0, 0,
-                // (int)screenWidth, (int)screenHeight), Color.Transparent);
-            }
+				/* Desenhar aqui restante dos elementos do início do jogo: vidas, timer, pontuação */
+				//spriteBatch.Draw(background, new Rectangle(0, 0,
+				// (int)screenWidth, (int)screenHeight), Color.Transparent);
+				map.Draw(spriteBatch);
+			}
+				
 
             spriteBatch.End();
 
@@ -217,8 +228,8 @@ namespace MonoGame2D
         /* Método de início do jogo */
         public void StartGame()
         {
-            enemies[0].x = 10;
-            enemies[0].y = (screenHeight / 3) - 50; //hardcoded, definir constante
+            //enemies[0].x = 10;
+            //enemies[0].y = (screenHeight / 3) - 50; //hardcoded, definir constante
 
         }
         public void spawnNewObstacle()
@@ -229,7 +240,7 @@ namespace MonoGame2D
             crow = new Enemy(GraphicsDevice, "Content/black_enemy.png", ScaleToHighDPI(0.3f));
 
             crow.x = -screenWidth / 17; //definir constante
-            crow.dX = (float)(acelerationToRigth * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
+            crow.dX = (float)(acelerationToRight * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
 
             crow.angle = 0; //angulo pra direita
 

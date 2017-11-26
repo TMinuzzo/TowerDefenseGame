@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_cute_enemy.png</SourceFile>
-  <SourceTime>2017-11-25T13:51:09.7419398-02:00</SourceTime>
+  <SourceTime>2017-11-26T19:17:55.0123596-02:00</SourceTime>
   <DestFile>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/bin/WindowsStoreApp/orange_cute_enemy.xnb</DestFile>
-  <DestTime>2017-11-25T13:54:55.3884516-02:00</DestTime>
+  <DestTime>2017-11-26T19:43:02.7912487-02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T12:05:36-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
