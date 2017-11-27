@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\mlpreport",
-    "\\TowerDefenseGameProgramming"
+    "\\TowerDefenseGameProgramming",
+    "\\TowerDefenseGameProgramming\\MonoGame2D",
+    "\\TowerDefenseGameProgramming\\MonoGame2D\\Classes"
   ],
   "SelectedNode": "\\TowerDefenseGameProgramming\\MonoGame2D.sln",
   "PreviewInSolutionExplorer": false

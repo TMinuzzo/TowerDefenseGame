@@ -100,8 +100,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Enemies.cs" />
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Level.cs" />
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\RectangleHelper.cs" />
+    <Compile Include="Classes\Sprite.cs" />
     <Compile Include="Classes\Struct.cs" />
     <Compile Include="Classes\Tiles.cs" />
     <Compile Include="GamePage.xaml.cs">
@@ -121,13 +126,16 @@
     <None Include="MonoGame2D_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\background.png" />
-    <Content Include="Content\black_enemy.png" />
-    <Content Include="Content\orange_cute_enemy.png" />
-    <Content Include="Content\orange_onion_enemy.png" />
+    <Content Include="Content\player.jpg" />
     <Content Include="Content\start-splash.png" />
-    <Content Include="Content\Tile1.jpg" />
-    <Content Include="Content\Tile2.jpg" />
+    <Content Include="Content\Tile1.png" />
+    <Content Include="Content\Tile2.png" />
+    <Content Include="Content\Tile3.png" />
+    <Content Include="Content\Tile4.png" />
+    <Content Include="Content\Tile6.png" />
+    <Content Include="Content\Tile5.png" />
+    <Content Include="Content\Tile7.png" />
+    <Content Include="Content\Tile8.png" />
     <Content Include="Content\tower.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

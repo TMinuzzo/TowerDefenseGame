@@ -1,64 +1,103 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame2D
 {
-    public class Enemy : Struct
+    public class Enemy : Sprite
     {
-		public float dX; // Aceleração em X do obstáculo
-		public float dY; // Aceleração em Y do obstáculo
+        private Queue<Vector2> waypoints = new Queue<Vector2>();
 
-		/* Getters */
-		public float GetDX()
-		{
-			return dX;
-		}
+        protected float startHealth;
+        protected float currentHealth;
 
-		public float GetDY()
-		{
-			return dY;
-		}
+        protected bool alive = true;
 
-		/* Setters */
-		public void SetDX(float dX)
-		{
-			this.dX = dX;
-		}
+        protected float speed = 0.5f;
+        protected int bountyGiven;
 
-		public void SetDY(float dY)
-		{
-			this.dY = dY;
-		}
-
-		// Construtor
-		public Enemy(GraphicsDevice graphicsDevice, string textureName, float scale)
+        public float CurrentHealth
         {
-
-            this.scale = scale;
-            var stream = TitleContainer.OpenStream(textureName);
-            texture = Texture2D.FromStream(graphicsDevice, stream);
+            get { return currentHealth; }
+            set { currentHealth = value; }
         }
 
-        public void Update(float elapsedTime)
+        public bool IsDead
         {
-            this.x = this.x + this.dX * 3;
-            this.y = this.y + this.dY * 3;
-       
+            get { return currentHealth <= 0; }
+        }
+        public int BountyGiven
+        {
+            get { return bountyGiven; }
         }
 
-        // Renderiza o(s) inimigo(s)
-        public void Draw(SpriteBatch spriteBatch)
+        public float DistanceToDestination
         {
-           
-            // Determina posição dos inimigos
-            Vector2 spritePosition = new Vector2(this.x, this.y);
-            // Desenha o sprite
-            spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
+            get { return Vector2.Distance(position, waypoints.Peek()); }
+        }
+
+        public Enemy(Texture2D texture, Vector2 position, float health, int bountyGiven, float speed)
+            : base(texture, position)
+        {
+            this.startHealth = health;
+            this.currentHealth = startHealth;
+
+            this.bountyGiven = bountyGiven;
+            this.speed = speed;
+        }
+
+        public void SetWaypoints(Queue<Vector2> waypoints)
+        {
+            foreach (Vector2 waypoint in waypoints)
+                this.waypoints.Enqueue(waypoint);
+
+            this.position = this.waypoints.Dequeue();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            if (waypoints.Count > 0)
+            {
+                if (DistanceToDestination < 1f)
+                {
+                    position = waypoints.Peek();
+                    waypoints.Dequeue();
+                }
+
+                else
+                {
+                    Vector2 direction = waypoints.Peek() - position;
+                    direction.Normalize();
+
+                    velocity = Vector2.Multiply(direction, speed);
+
+                    position += velocity;
+                }
+            }
+
+            else
+                alive = false;
+
+            if (currentHealth <= 0)
+                alive = false;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (alive)
+            {
+                float healthPercentage = (float)currentHealth / (float)startHealth;
+
+                Color color = new Color(new Vector3(1 - healthPercentage,
+                    1 - healthPercentage, 1 - healthPercentage));
+
+                base.Draw(spriteBatch, color);
+            }
         }
     }
 }
