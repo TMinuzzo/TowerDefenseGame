@@ -6,14 +6,14 @@
   <SourceFiles>
     <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/GameState.spritefont</File>
     <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/start-splash.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/player.jpg</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile1.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile2.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile3.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile4.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile5.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile6.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile7.png</File>
-    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile8.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/blackEnemy.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/enemyCute.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/enemyOnion.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/grass.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/heart.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/path.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/tower.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/tree1.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/tree2.png</File>
   </SourceFiles>
 </SourceFileCollection>

@@ -14,10 +14,15 @@ namespace MonoGame2D
         protected float startHealth;
         protected float currentHealth;
 
-        protected bool alive = true;
+        public bool alive = true;
 
         protected float speed = 0.5f;
         protected int bountyGiven;
+
+		public bool IsAlive()
+		{
+			return alive;
+		}
 
         public float CurrentHealth
         {
@@ -96,7 +101,7 @@ namespace MonoGame2D
                 Color color = new Color(new Vector3(1 - healthPercentage,
                     1 - healthPercentage, 1 - healthPercentage));
 
-                base.Draw(spriteBatch, color);
+                base.Draw(spriteBatch, Color.White);
             }
         }
     }

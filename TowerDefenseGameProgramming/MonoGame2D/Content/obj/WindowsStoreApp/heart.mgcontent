@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile1.png</SourceFile>
-  <SourceTime>2017-11-26T21:26:26.2675849-02:00</SourceTime>
-  <DestFile>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/bin/WindowsStoreApp/Tile1.xnb</DestFile>
-  <DestTime>2017-11-26T21:27:55.9549984-02:00</DestTime>
+  <SourceFile>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/heart.png</SourceFile>
+  <SourceTime>2017-11-27T21:08:31.9242261-02:00</SourceTime>
+  <DestFile>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/bin/WindowsStoreApp/heart.xnb</DestFile>
+  <DestTime>2017-11-27T21:08:36.5020155-02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T12:05:36-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
