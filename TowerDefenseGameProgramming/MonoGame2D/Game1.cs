@@ -26,6 +26,8 @@ namespace MonoGame2D
 
 		List<Texture2D> enemyTextures = new List<Texture2D>();
 
+		Player player;
+
 		public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -38,7 +40,8 @@ namespace MonoGame2D
 
         protected override void Initialize()
         {
-            base.Initialize();
+			this.IsMouseVisible = true;
+			base.Initialize();
         }
 
         protected override void LoadContent()
@@ -59,7 +62,12 @@ namespace MonoGame2D
 			level.AddTexture(tree1);
 			level.AddTexture(tree2);
 
-        }
+			Texture2D towerTexture = Content.Load<Texture2D>("tower");
+			Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
+
+			player = new Player(level, towerTexture, bulletTexture);
+
+		}
 
         protected override void UnloadContent()
         {
@@ -75,6 +83,8 @@ namespace MonoGame2D
 
 			LoadEnemies();
 
+			player.Update(gameTime, enemies);
+
 			base.Update(gameTime);
         }
 
@@ -88,7 +98,9 @@ namespace MonoGame2D
 
 			DrawEnemies();
 
-            spriteBatch.End();
+			player.Draw(spriteBatch);
+
+			spriteBatch.End();
 
             base.Draw(gameTime);
         }

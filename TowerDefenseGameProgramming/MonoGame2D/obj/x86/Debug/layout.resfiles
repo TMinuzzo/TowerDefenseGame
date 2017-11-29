@@ -8,6 +8,7 @@ Assets\StoreLogo.png
 Assets\Wide310x150Logo.scale-200.png
 MonoGame2D.xr.xml
 Content\blackEnemy.xnb
+Content\bullet.xnb
 Content\Content\background.xnb
 Content\Content\black_enemy.xnb
 Content\Content\GameState.xnb
@@ -21,6 +22,7 @@ Content\enemyOnion.xnb
 Content\GameState.xnb
 Content\grass.xnb
 Content\heart.xnb
+Content\leaf.xnb
 Content\orange_cute_enemy.xnb
 Content\orange_onion_enemy.xnb
 Content\path.xnb
@@ -29,10 +31,12 @@ Content\tower.xnb
 Content\tree1.xnb
 Content\tree2.xnb
 Content\blackEnemy.png
+Content\bullet.png
 Content\enemyCute.png
 Content\enemyOnion.png
 Content\grass.png
 Content\heart.png
+Content\leaf.png
 Content\path.png
 Content\start-splash.png
 Content\tower.png

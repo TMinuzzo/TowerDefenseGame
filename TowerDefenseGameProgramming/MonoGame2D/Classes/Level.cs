@@ -74,5 +74,14 @@ namespace MonoGame2D
                 }
             }
         }
-    }
+
+		public int GetIndex(int cellX, int cellY)
+		{
+			if (cellX < 0 || cellX > Width || cellY < 0 || cellY > Height)
+				return 0;
+
+			return map[cellY, cellX];
+		}
+
+	}
 }

@@ -24,7 +24,12 @@ namespace MonoGame2D
             get { return center; }
         }
 
-        public Sprite(Texture2D tex, Vector2 pos)
+		public Vector2 Position
+		{
+			get { return position; }
+		}
+
+		public Sprite(Texture2D tex, Vector2 pos)
         {
             texture = tex;
 
