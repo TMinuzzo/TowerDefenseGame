@@ -32,11 +32,11 @@ namespace MonoGame2D
 			get { return lives; }
 		}
 
-		private Level level;
+		private Map map;
 
-		public Player(Level level, Texture2D towerTexture, Texture2D bulletTexture)
+		public Player(Map map, Texture2D towerTexture, Texture2D bulletTexture)
 		{
-			this.level = level;
+			this.map = map;
 
 			this.towerTexture = towerTexture;
 			this.bulletTexture = bulletTexture;
@@ -52,11 +52,11 @@ namespace MonoGame2D
 		{
 			mouseState = Mouse.GetState();
 
-			cellX = (int)(mouseState.X / 32); // Convert the position of the mouse
-			cellY = (int)(mouseState.Y / 32); // from array space to level space
+			cellX = (int)(mouseState.X / 64); // Convert the position of the mouse
+			cellY = (int)(mouseState.Y / 64); // from array space to level space
 
-			tileX = cellX * 32; // Convert from array space to level space
-			tileY = cellY * 32; // Convert from array space to level space
+			tileX = cellX * 64; // Convert from array space to level space
+			tileY = cellY * 64; // Convert from array space to level space
 
 			if (mouseState.LeftButton == ButtonState.Released
 				&& oldState.LeftButton == ButtonState.Pressed)
@@ -84,7 +84,7 @@ namespace MonoGame2D
 		private bool IsCellClear()
 		{
 			bool inBounds = cellX >= 0 && cellY >= 0 && // Make sure tower is within limits
-				cellX < level.Width && cellY < level.Height;
+				cellX < map.Width && cellY < map.Height;
 
 			bool spaceClear = true;
 
@@ -96,9 +96,10 @@ namespace MonoGame2D
 					break;
 			}
 
-			bool onPath = (level.GetIndex(cellX, cellY) != 1);
+			/* Players only can put their towers in the grass */
+			bool onGrass = (map.GetIndex(cellX, cellY) == 0);
 
-			return inBounds && spaceClear && onPath; // If both checks are true return true
+			return inBounds && spaceClear && onGrass; // If both checks are true return true
 		}
 
 		public void Draw(SpriteBatch spriteBatch)

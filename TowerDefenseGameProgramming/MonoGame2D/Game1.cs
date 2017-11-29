@@ -20,7 +20,7 @@ namespace MonoGame2D
 
 		Random random = new Random();
 
-		Level level = new Level();
+		Map level = new Map();
 
         List<Enemy> enemies = new List<Enemy>();
 
