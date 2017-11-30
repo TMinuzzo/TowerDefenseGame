@@ -11,8 +11,8 @@ namespace MonoGame2D
 {
     public class Player
     {
-        private int gold = 50;
-        private int lives = 4;
+        private int gold = Constants.PLAYER_START_GOLD;
+        private int lives = Constants.PLAYER_START_LIFES;
 
         private List<Tower> towers = new List<Tower>();
 
@@ -65,33 +65,29 @@ namespace MonoGame2D
         {
             mouseState = Mouse.GetState();
 
-            cellX = (int)(mouseState.X / 64); // Convert the position of the mouse
-            cellY = (int)(mouseState.Y / 64); // from array space to level space
+            cellX = (int)(mouseState.X / Constants.MAP_TILE_SIZE); // Convert the position of the mouse
+            cellY = (int)(mouseState.Y / Constants.MAP_TILE_SIZE); // from array space to level space
 
-            tileX = cellX * 64; // Convert from array space to level space
-            tileY = cellY * 64; // Convert from array space to level space
+            tileX = cellX * Constants.MAP_TILE_SIZE; // Convert from array space to level space
+            tileY = cellY * Constants.MAP_TILE_SIZE; // Convert from array space to level space
 
             if (mouseState.LeftButton == ButtonState.Released
                 && oldState.LeftButton == ButtonState.Pressed)
             {
-	    if (IsCellClear())
-                {
-                    ArrowTower tower = new ArrowTower(towerTexture, bulletTexture, new Vector2(tileX, tileY));
-                    if (tower.Cost <= gold)
-                    {
-                        towers.Add(tower);
-                        gold -= tower.Cost;
-                    }
-                }
-            }
+				if (IsCellClear())
+				{
+					ArrowTower tower = new ArrowTower(towerTexture, bulletTexture, new Vector2(tileX, tileY));
+					if (tower.Cost <= gold)
+					{
+						towers.Add(tower);
+						gold -= tower.Cost;
+					}
+				}
+			}
 
             foreach (Tower tower in towers)
             {
-                if (tower.Target == null)
-                {
-                    tower.GetClosestEnemy(enemies);
-                }
-
+				tower.GetClosestEnemy(enemies);
                 tower.Update(gameTime);
             }
 
@@ -127,5 +123,9 @@ namespace MonoGame2D
             }
         }
 
-    }
+		public void ClearTowers()
+		{
+			towers.Clear();
+		}
+	}
 }

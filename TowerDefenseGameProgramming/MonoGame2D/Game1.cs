@@ -8,13 +8,6 @@ using Windows.UI.ViewManagement;
 
 namespace MonoGame2D
 {
-    public class Contants
-	{
-        public static int MAX_ENEMIES = 3;
-        public static int MAX_LIVES = 4;
-        public static int MAX_GOLD = 50;
-	}
-
 	public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
@@ -42,8 +35,8 @@ namespace MonoGame2D
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             startConfigScreen();
-            graphics.PreferredBackBufferWidth = level.Width * 64;
-            graphics.PreferredBackBufferHeight = 256 + level.Height * 64;
+            graphics.PreferredBackBufferWidth = level.Width * Constants.MAP_TILE_SIZE;
+            graphics.PreferredBackBufferHeight = 256 + level.Height * Constants.MAP_TILE_SIZE;
             //graphics.ApplyChanges();
         }
 
@@ -61,7 +54,7 @@ namespace MonoGame2D
             Texture2D topBar = Content.Load<Texture2D>("menu");
             SpriteFont font = Content.Load<SpriteFont>("GameState");       
 
-            toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 64));
+            toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * Constants.MAP_TILE_SIZE));
 
             startGameSplash = Content.Load<Texture2D>("start-splash");
             gameOverSplash = Content.Load<Texture2D>("GameOver");
@@ -169,9 +162,9 @@ namespace MonoGame2D
             if (spawn >= 3) // Respawns an enemy every second
             {
                 spawn = 0;
-                if (enemies.Count <= Contants.MAX_ENEMIES) // Limits the respawn
+                if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
                 {
-                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero, 100, 10, 1f);
+                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
                     enemy.SetWaypoints(level.Waypoints);
 
                     enemies.Add(enemy);
@@ -186,12 +179,17 @@ namespace MonoGame2D
                     enemies.RemoveAt(i);
                     i--;
 
-                    player.setLives(player.getLives() - 1);
+					player.setLives(player.getLives() - 1);
+
                     if (player.getLives() == 0)
                     {
                         gameOver = true;
                     }
-                }
+                } else if (!enemies[i].IsAlive())
+				{
+					enemies.RemoveAt(i);
+					i--;
+				}
             }
 
         }
@@ -230,10 +228,10 @@ namespace MonoGame2D
         {
             gameStarted = true;
             gameOver = false;
-            player.setLives(Contants.MAX_LIVES);
-            player.setGold(Contants.MAX_GOLD);
+            player.setLives(Constants.PLAYER_START_LIFES);
+            player.setGold(Constants.PLAYER_START_GOLD);
             enemies.Clear();
-
+			player.ClearTowers();
         }
     }
 }

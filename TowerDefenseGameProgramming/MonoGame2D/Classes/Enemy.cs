@@ -11,14 +11,12 @@ namespace MonoGame2D
     {
         private Queue<Vector2> waypoints = new Queue<Vector2>();
 
-        protected float startHealth;
-        protected float currentHealth;
-        protected bool outOfScreen = false;
+		public float startHealth = Constants.ENEMY_START_HEALTH;
+        protected float speed = Constants.ENEMY_SPEED;
 
-        public bool alive = true;
-
-        protected float speed = 0.5f;
-        protected int bountyGiven;
+		public float currentHealth;
+		public bool outOfScreen = false;
+		public bool alive = true;
 
         public bool IsAlive()
         {
@@ -40,24 +38,16 @@ namespace MonoGame2D
             get { return currentHealth <= 0; }
             set { currentHealth  = 0; }
         }
-        public int BountyGiven
-        {
-            get { return bountyGiven; }
-        }
 
         public float DistanceToDestination
         {
             get { return Vector2.Distance(position, waypoints.Peek()); }
         }
 
-        public Enemy(Texture2D texture, Vector2 position, float health, int bountyGiven, float speed)
+        public Enemy(Texture2D texture, Vector2 position)
             : base(texture, position)
         {
-            this.startHealth = health;
             this.currentHealth = startHealth;
-
-            this.bountyGiven = bountyGiven;
-            this.speed = speed;
         }
        
         public void SetWaypoints(Queue<Vector2> waypoints)
@@ -72,33 +62,35 @@ namespace MonoGame2D
         {
             base.Update(gameTime);
 
-            if (waypoints.Count > 0)
-            {
-                if (DistanceToDestination < 1f)
-                {
-                    position = waypoints.Peek();
-                    waypoints.Dequeue();
-                }
+			if (waypoints.Count > 0)
+			{
+				if (DistanceToDestination < 1f)
+				{
+					position = waypoints.Peek();
+					waypoints.Dequeue();
+				}
 
-                else
-                {
-                    Vector2 direction = waypoints.Peek() - position;
-                    direction.Normalize();
+				else
+				{
+					Vector2 direction = waypoints.Peek() - position;
+					direction.Normalize();
 
-                    velocity = Vector2.Multiply(direction, speed);
+					velocity = Vector2.Multiply(direction, speed);
 
-                    position += velocity;
-                }
-            }
+					position += velocity;
+				}
+			}
+			else
+			{
+				outOfScreen = true;
+				alive = false;
+			}
 
-            else
-            {
-                outOfScreen = true;
-                alive = false;
-            }
-
-            if (currentHealth <= 0)
-                alive = false;
+			if (currentHealth <= 0)
+			{
+				alive = false;
+			}
+                
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -108,10 +100,7 @@ namespace MonoGame2D
                 float healthPercentage = (float)currentHealth / (float)startHealth;              
 
                 base.Draw(spriteBatch, Color.White);
-            }
-            if (outOfScreen == true || alive == false)
-                alive = false; 
-                base.Draw(spriteBatch, Color.Transparent);
+            }      
         }
-    }
+	}
 }

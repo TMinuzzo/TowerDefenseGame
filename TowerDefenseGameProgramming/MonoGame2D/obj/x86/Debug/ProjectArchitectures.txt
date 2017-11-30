@@ -1,1 +1,1 @@
-C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\MonoGame2D.csproj;x86
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\MonoGame2D.csproj;x86

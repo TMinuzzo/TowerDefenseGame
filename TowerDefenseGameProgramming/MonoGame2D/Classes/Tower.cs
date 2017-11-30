@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MonoGame2D
 {
-    public class Tower : Sprite
+    abstract public class Tower : Sprite
 	{
         protected float bulletTimer; // How long ago was a bullet fired
         protected List<Bullet> bulletList = new List<Bullet>();
@@ -45,7 +45,6 @@ namespace MonoGame2D
             this.bulletTexture = bulletTexture;
         }
 
-
         public bool IsInRange(Vector2 position)
         {
             return Vector2.Distance(center, position) <= radius;
@@ -58,7 +57,10 @@ namespace MonoGame2D
 
             foreach (Enemy enemy in enemies)
             {
-                if (Vector2.Distance(center, enemy.Center) < smallestRange)
+				bool outOfScreen = enemy.IsOutOfScreen();
+				bool alive = enemy.IsAlive();
+
+				if (Vector2.Distance(center, enemy.Center) < smallestRange && !outOfScreen && alive)
                 {
                     smallestRange = Vector2.Distance(center, enemy.Center);
                     target = enemy;
@@ -78,7 +80,7 @@ namespace MonoGame2D
         {
             base.Update(gameTime);
 
-            bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+			bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (target != null)
             {

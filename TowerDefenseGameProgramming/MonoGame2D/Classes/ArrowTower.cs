@@ -13,10 +13,8 @@ namespace MonoGame2D
         public ArrowTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.damage = 15; // Set the damage
-            this.cost = 15;   // Set the initial cost
-
-            this.radius = 150; // Set the radius
+            this.damage = Constants.ARROW_TOWER_DAMAGE; // Set the damage
+            this.radius = Constants.ARROW_TOWER_RADIUS; // Set the radius
         }
 
         public override void Update(GameTime gameTime)

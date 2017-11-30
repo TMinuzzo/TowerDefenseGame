@@ -42,74 +42,38 @@ namespace MonoGame2D
             get { return mapMatrix.GetLength(0); }
         }
 
-        /* Constructor with tileSize passed as an argument */
-        public Map(int tileSize)
-        {
-            /* Add each point of enemy's path: position * tile size */
-            waypoints.Enqueue(new Vector2(0, 0) * tileSize);
-            waypoints.Enqueue(new Vector2(1, 0) * tileSize);
-            waypoints.Enqueue(new Vector2(2, 0) * tileSize);
-            waypoints.Enqueue(new Vector2(2, 1) * tileSize);
-            waypoints.Enqueue(new Vector2(3, 1) * tileSize);
-            waypoints.Enqueue(new Vector2(3, 2) * tileSize);
-            waypoints.Enqueue(new Vector2(4, 2) * tileSize);
-            waypoints.Enqueue(new Vector2(4, 4) * tileSize);
-            waypoints.Enqueue(new Vector2(3, 4) * tileSize);
-            waypoints.Enqueue(new Vector2(3, 5) * tileSize);
-            waypoints.Enqueue(new Vector2(2, 5) * tileSize);
-            waypoints.Enqueue(new Vector2(2, 7) * tileSize);
-            waypoints.Enqueue(new Vector2(8, 7) * tileSize);
-            waypoints.Enqueue(new Vector2(8, 3) * tileSize); 
-            waypoints.Enqueue(new Vector2(10, 3) * tileSize);
-            waypoints.Enqueue(new Vector2(10, 5) * tileSize);
-            waypoints.Enqueue(new Vector2(12, 5) * tileSize);
-            waypoints.Enqueue(new Vector2(12, 2) * tileSize);
-            waypoints.Enqueue(new Vector2(14, 2) * tileSize);
-            waypoints.Enqueue(new Vector2(14, 3) * tileSize);
-            waypoints.Enqueue(new Vector2(16, 3) * tileSize);
-            waypoints.Enqueue(new Vector2(16, 5) * tileSize);
-            waypoints.Enqueue(new Vector2(17, 5) * tileSize);
-            waypoints.Enqueue(new Vector2(17, 6) * tileSize);
-            waypoints.Enqueue(new Vector2(18, 6) * tileSize);
-            waypoints.Enqueue(new Vector2(18, 7) * tileSize);
-            waypoints.Enqueue(new Vector2(20, 7) * tileSize);
-            waypoints.Enqueue(new Vector2(20, 6) * tileSize);
-            waypoints.Enqueue(new Vector2(21, 6) * tileSize);
-        }
-
-        /* Constructor with tileSize default */
         public Map()
         {
             /* Add each point of enemy's path: position * tile size */
-            waypoints.Enqueue(new Vector2(0, 0) * 64);
-            waypoints.Enqueue(new Vector2(1, 0) * 64);
-            waypoints.Enqueue(new Vector2(2, 0) * 64);
-            waypoints.Enqueue(new Vector2(2, 1) * 64);
-            waypoints.Enqueue(new Vector2(3, 1) * 64);
-            waypoints.Enqueue(new Vector2(3, 2) * 64);
-            waypoints.Enqueue(new Vector2(4, 2) * 64);
-            waypoints.Enqueue(new Vector2(4, 4) * 64);
-            waypoints.Enqueue(new Vector2(3, 4) * 64);
-            waypoints.Enqueue(new Vector2(3, 5) * 64);
-            waypoints.Enqueue(new Vector2(2, 5) * 64);
-            waypoints.Enqueue(new Vector2(2, 7) * 64);
-            waypoints.Enqueue(new Vector2(8, 7) * 64);
-            waypoints.Enqueue(new Vector2(8, 3) * 64);
-            waypoints.Enqueue(new Vector2(10, 3) * 64);
-            waypoints.Enqueue(new Vector2(10, 5) * 64);
-            waypoints.Enqueue(new Vector2(12, 5) * 64);
-            waypoints.Enqueue(new Vector2(12, 2) * 64);
-            waypoints.Enqueue(new Vector2(14, 2) * 64);
-            waypoints.Enqueue(new Vector2(14, 3) * 64);
-            waypoints.Enqueue(new Vector2(16, 3) * 64);
-            waypoints.Enqueue(new Vector2(16, 5) * 64);
-            waypoints.Enqueue(new Vector2(17, 5) * 64);
-            waypoints.Enqueue(new Vector2(17, 6) * 64);
-            waypoints.Enqueue(new Vector2(18, 6) * 64);
-            waypoints.Enqueue(new Vector2(18, 7) * 64);
-            waypoints.Enqueue(new Vector2(20, 7) * 64);
-            waypoints.Enqueue(new Vector2(20, 6) * 64);
-            waypoints.Enqueue(new Vector2(21, 6) * 64);
+            waypoints.Enqueue(new Vector2(0, 0) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(1, 0) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(2, 0) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(2, 1) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(3, 1) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(3, 2) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(4, 2) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(4, 4) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(3, 4) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(3, 5) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(2, 5) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(2, 7) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(8, 7) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(8, 3) * Constants.MAP_TILE_SIZE); 
+            waypoints.Enqueue(new Vector2(10, 3) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(10, 5) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(12, 5) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(12, 2) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(14, 2) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(14, 3) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(16, 3) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(16, 5) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(17, 5) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(17, 6) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(18, 6) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(18, 7) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(20, 7) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(20, 6) * Constants.MAP_TILE_SIZE);
+            waypoints.Enqueue(new Vector2(21, 6) * Constants.MAP_TILE_SIZE);
         }
 
         public void AddTexture(Texture2D texture)
@@ -130,7 +94,7 @@ namespace MonoGame2D
 
                     Texture2D texture = tileTextures[textureIndex];
 
-                    batch.Draw(texture, new Rectangle(x * 64, y * 64, 64, 64), Color.White);
+                    batch.Draw(texture, new Rectangle(x * Constants.MAP_TILE_SIZE, y * Constants.MAP_TILE_SIZE, Constants.MAP_TILE_SIZE, Constants.MAP_TILE_SIZE), Color.White);
                 }
             }
         }
