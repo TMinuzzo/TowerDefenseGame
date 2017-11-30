@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-30T20:16:56.024</Modified>
+      <Modified>2017-11-30T21:25:14.444</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\MonoGame2D.exe">
       <PackagePath>entrypoint\MonoGame2D.exe</PackagePath>
-      <Modified>2017-11-30T20:16:55.422</Modified>
+      <Modified>2017-11-30T21:25:13.866</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -476,21 +476,13 @@
       <PackagePath>SharpDX.XAudio2.dll</PackagePath>
       <Modified>2017-10-15T16:46:22.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\black_enemy.png">
-      <PackagePath>Content\black_enemy.png</PackagePath>
-      <Modified>2017-11-26T16:37:27.374</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\grass.png">
       <PackagePath>Content\grass.png</PackagePath>
       <Modified>2017-11-26T23:19:26.074</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\heart.png">
       <PackagePath>Content\heart.png</PackagePath>
-      <Modified>2017-11-26T16:47:12.183</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\orange_onion_enemy.png">
-      <PackagePath>Content\orange_onion_enemy.png</PackagePath>
-      <Modified>2017-11-30T14:01:28.632</Modified>
+      <Modified>2017-11-30T20:58:20.992</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\start-splash.png">
       <PackagePath>Content\start-splash.png</PackagePath>
@@ -498,7 +490,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\tower.png">
       <PackagePath>Content\tower.png</PackagePath>
-      <Modified>2017-11-26T16:45:06.496</Modified>
+      <Modified>2017-11-30T21:00:37.487</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -534,13 +526,17 @@
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2017-11-12T20:23:29.670</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\black_enemy.xnb">
-      <PackagePath>Content\black_enemy.xnb</PackagePath>
-      <Modified>2017-11-26T23:25:45.924</Modified>
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\blackEnemy.xnb">
+      <PackagePath>Content\blackEnemy.xnb</PackagePath>
+      <Modified>2017-11-30T21:16:13.063</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\bullet.xnb">
       <PackagePath>Content\bullet.xnb</PackagePath>
-      <Modified>2017-11-30T10:36:40.513</Modified>
+      <Modified>2017-11-30T21:16:19.117</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\enemyOnion.xnb">
+      <PackagePath>Content\enemyOnion.xnb</PackagePath>
+      <Modified>2017-11-30T21:23:04.538</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\GameOver.xnb">
       <PackagePath>Content\GameOver.xnb</PackagePath>
@@ -548,7 +544,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\GameState.xnb">
       <PackagePath>Content\GameState.xnb</PackagePath>
-      <Modified>2017-11-30T16:16:52.560</Modified>
+      <Modified>2017-11-30T21:16:18.065</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\grass.xnb">
       <PackagePath>Content\grass.xnb</PackagePath>
@@ -556,7 +552,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\heart.xnb">
       <PackagePath>Content\heart.xnb</PackagePath>
-      <Modified>2017-11-26T23:25:45.968</Modified>
+      <Modified>2017-11-30T21:16:18.164</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\leaf.xnb">
+      <PackagePath>Content\leaf.xnb</PackagePath>
+      <Modified>2017-11-30T21:16:19.151</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\menu.xnb">
       <PackagePath>Content\menu.xnb</PackagePath>
@@ -564,11 +564,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\orange_cute_enemy.xnb">
       <PackagePath>Content\orange_cute_enemy.xnb</PackagePath>
-      <Modified>2017-11-30T10:09:51.885</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\orange_onion_enemy.xnb">
-      <PackagePath>Content\orange_onion_enemy.xnb</PackagePath>
-      <Modified>2017-11-30T14:02:08.791</Modified>
+      <Modified>2017-11-30T21:16:18.325</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\path.xnb">
       <PackagePath>Content\path.xnb</PackagePath>
@@ -580,19 +576,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\tower.xnb">
       <PackagePath>Content\tower.xnb</PackagePath>
-      <Modified>2017-11-26T23:25:45.988</Modified>
+      <Modified>2017-11-30T21:16:18.667</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\tree1.xnb">
       <PackagePath>Content\tree1.xnb</PackagePath>
-      <Modified>2017-11-30T13:24:43.878</Modified>
+      <Modified>2017-11-30T21:16:18.777</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\tree2.xnb">
       <PackagePath>Content\tree2.xnb</PackagePath>
-      <Modified>2017-11-30T13:21:45.013</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\Walking.xnb">
-      <PackagePath>Content\Walking.xnb</PackagePath>
-      <Modified>2017-11-30T20:13:59.057</Modified>
+      <Modified>2017-11-30T21:16:18.891</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\MonoGame2D.xr.xml">
       <PackagePath>MonoGame2D.xr.xml</PackagePath>
@@ -605,11 +597,11 @@
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-30T20:14:04.339</Modified>
+      <Modified>2017-11-30T21:23:07.626</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Core\MonoGame2D.exe">
       <PackagePath>MonoGame2D.exe</PackagePath>
-      <Modified>2017-11-30T20:16:56.013</Modified>
+      <Modified>2017-11-30T21:25:14.426</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

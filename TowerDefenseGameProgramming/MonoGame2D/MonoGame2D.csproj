@@ -101,7 +101,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Button.cs" />
-    <Compile Include="Classes\AnimatedSprite.cs" />
     <Compile Include="Classes\ArrowTower.cs" />
     <Compile Include="Classes\Bullet.cs" />
     <Compile Include="Classes\Enemy.cs" />
@@ -115,6 +114,7 @@
     </Compile>
     <Compile Include="Game1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Tower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -126,17 +126,10 @@
     <None Include="MonoGame2D_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bullet.png" />
     <Content Include="Content\grass.png" />
     <Content Include="Content\heart.png" />
-    <Content Include="Content\grass.png" />
-    <Content Include="Content\heart.png" />
-    <Content Include="Content\leaf.png" />
-    <Content Include="Content\path.png" />
     <Content Include="Content\start-splash.png" />
     <Content Include="Content\tower.png" />
-    <Content Include="Content\tree1.png" />
-    <Content Include="Content\tree2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

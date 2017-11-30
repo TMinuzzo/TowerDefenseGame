@@ -37,9 +37,6 @@ namespace MonoGame2D
         Texture2D startGameSplash;
         Texture2D gameOverSplash;
 
-
-		Player player;
-
 		public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -66,6 +63,7 @@ namespace MonoGame2D
 
             toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 64));
 
+            startGameSplash = Content.Load<Texture2D>("start-splash");
             gameOverSplash = Content.Load<Texture2D>("GameOver");
 
             Texture2D grass = Content.Load<Texture2D>("grass");
@@ -73,9 +71,9 @@ namespace MonoGame2D
             Texture2D tree1 = Content.Load<Texture2D>("tree1");
             Texture2D tree2 = Content.Load<Texture2D>("tree2");
             
-            enemyTextures.Add(Content.Load<Texture2D>("black_enemy"));
+            enemyTextures.Add(Content.Load<Texture2D>("blackEnemy"));
             enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
-            enemyTextures.Add(Content.Load<Texture2D>("orange_onion_enemy"));
+            enemyTextures.Add(Content.Load<Texture2D>("enemyOnion"));
 
             level.AddTexture(grass);
             level.AddTexture(path);
@@ -98,7 +96,7 @@ namespace MonoGame2D
         protected override void Update(GameTime gameTime)
         {
             spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+            KeyboardHandler();
 
             UpdateEnemies(gameTime);
 
@@ -113,25 +111,29 @@ namespace MonoGame2D
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(); 
+            spriteBatch.Begin();
 
             level.Draw(spriteBatch);
-            
+
             DrawEnemies();
 
             player.Draw(spriteBatch);
 
             toolBar.Draw(spriteBatch, player);
 
+            if (!gameStarted)
+            {
                 spriteBatch.Draw(startGameSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
-			DrawEnemies();
+            }
+            else
+            {
             }
             if (gameOver)
             {
                 spriteBatch.Draw(gameOverSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
 
-			spriteBatch.End();
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

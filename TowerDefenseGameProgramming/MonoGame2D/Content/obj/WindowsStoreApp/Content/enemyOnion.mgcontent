@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_onion_enemy.png</SourceFile>
-  <SourceTime>2017-11-30T12:01:28.6322835-02:00</SourceTime>
-  <DestFile>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/bin/WindowsStoreApp/Content/orange_onion_enemy.xnb</DestFile>
-  <DestTime>2017-11-30T12:02:08.7916623-02:00</DestTime>
+  <SourceFile>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/enemyOnion.png</SourceFile>
+  <SourceTime>2017-11-30T18:44:07.4311411-02:00</SourceTime>
+  <DestFile>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/bin/WindowsStoreApp/Content/enemyOnion.xnb</DestFile>
+  <DestTime>2017-11-30T19:23:04.538467-02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-10-15T14:46:32-02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
