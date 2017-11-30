@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>WindowsStoreApp</Platform>
+  <Config />
+  <SourceFiles>
+<<<<<<< Updated upstream
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/background.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/black_enemy.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/GameState.spritefont</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_cute_enemy.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_onion_enemy.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/start-splash.png</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile1.jpg</File>
+    <File>C:/Users/pietr/Documents/CIC/MLP/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/Tile2.jpg</File>
+=======
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/background.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/black_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/GameState.spritefont</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/heart.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_cute_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/orange_onion_enemy.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/start-splash.png</File>
+    <File>C:/Users/TesteClaw/Desktop/GIT/TowerDefenseGame/TowerDefenseGame/TowerDefenseGameProgramming/MonoGame2D/Content/tower.png</File>
+>>>>>>> Stashed changes
+  </SourceFiles>
+</SourceFileCollection>

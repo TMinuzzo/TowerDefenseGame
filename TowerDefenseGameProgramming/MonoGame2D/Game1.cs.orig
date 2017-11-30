@@ -1,0 +1,383 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
+using Monogame2D;
+using System;
+using System.Collections.Generic;
+using Windows.Graphics.Display;
+using Windows.UI.ViewManagement;
+using System.Xml.Serialization;
+
+namespace MonoGame2D
+{
+
+    static class Constants
+    {
+        // Constante de diretorio ativo
+        public const string directory = "Content";
+
+        // Contantes de movimentação dos inimigos
+        public const float acelerationFactor = (float)0.25; 
+        public const float decAceleration = (float)0.2;
+        public const float rightAceleration = 1; // Direção da aceleração 
+        public const float angleObstacleToRight = 0; // Ângulo da aceleração
+        // Constantes de controle de loop do jogo junto a atualização de obstaculos
+        
+
+        // Constantes de valores default de vida,nivel, pontos e etc do jogo
+        public const int initialLives = 3;
+        public const int initialLevel = 0;
+        public const int initialScore = 0;
+        public const int maxLevel = 8;
+
+        // Constantes de nome de arquivos a serem caregados
+        public const string towerSprite = "Content/tower.png";
+        public const string orangeCuteSprite = "Content/orange_cute_enemy.png";
+        public const string orangeOnionSprite = "Content/orange_onion_enemy.png";
+        public const string blackEnemySprites = "Content/black_enemy.png";
+<<<<<<< Updated upstream
+=======
+        public const string hearthSprites = "heart";
+        public const string backgroundSprite = "background";
+>>>>>>> Stashed changes
+        public const string startSprite = "start-splash";
+
+    }
+
+    public class Game1 : Game
+    {
+        // Declaração de variaveis globias dentre a classe
+        // Variaveis de ambiente grafico
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+        SpriteFont stateFont;
+        SpriteFont scoreFont;
+        Texture2D startGameSplash;
+        Texture2D background;
+        Texture2D tower;
+        Texture2D heart;
+        float scale;
+		Map map;
+
+        // Variaveis de posicionamento
+        float screenWidth;
+        float screenHeight;
+        float streeLeftLimit;
+        float streeRigthLimit;
+        Vector2 spritePositionTower = new Vector2(700, 500);// posicao do botao da torre
+        Vector2 spritePositionHearths; //= new Vector2(500 , (screenHeight / 9 * 8));
+        Vector2 spritePositionHearths2; //= new Vector2(313, (screenHeight / 9 * 8));
+        Vector2 spritePositionHearths3; //= new Vector2(50, (screenHeight / 9 * 8));
+
+
+        // Variaveis posicionamento angular e aceleração todas já iniializadas aqui
+        float angleToRight = Constants.angleObstacleToRight;
+        float acelerationToRight = Constants.rightAceleration;
+
+        // Variaveis de controle de estado de jogo
+        bool gameStarted;
+        bool gameOver;
+        bool win;
+        int score;
+        int lives;
+        int level;
+
+        // Variavel para geração ramdomica
+        Random random;
+        Button button;
+        Button button2;
+
+        // Declaração da lista de inimigos e torres
+<<<<<<< Updated upstream
+        List<Enemy> enemies = new List<Enemy>();
+        List<Tower> towers = new List<Tower>();
+=======
+        List<Enemies> enemies = new List<Enemies>();
+        List<Towers> towers = new List<Towers>();
+        Towers tower1;
+
+        // Declaração de eventos
+        public event EventHandler OnDecrementLives;
+>>>>>>> Stashed changes
+
+        // Fim da declaração de globais da classe
+
+        public Game1()
+        {
+            graphics = new GraphicsDeviceManager(this);
+         
+            IsMouseVisible = true;
+            Content.RootDirectory = Constants.directory;
+
+        }
+
+        /* Método de inicialização */
+        protected override void Initialize()
+        {
+            base.Initialize();
+            startScreenConfigs();
+            lives = Constants.initialLives;
+            /* Inicializa parametros de jogo */
+            gameStarted = false;
+            //gameOver = false;
+            //win = false;
+
+            random = new Random();
+
+            /* Inicializa escala de frames da tela utilizada
+               Inicializa em tela cheia
+               Inicializa com ponteiro do mouse oculto */
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+            screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
+            screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
+
+			map = new Map();
+
+			map.Generate(new int[,]{
+				{0,0,0,1},
+				{0,0,1,2},
+				{0,1,2,2},
+				{1,2,2,2},
+			}, 64);
+
+		}
+
+        /* Método de carga de elementos externos */
+        protected override void LoadContent()
+        {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            /* Carrega texturas de do jogo */
+            startGameSplash = Content.Load<Texture2D>("start-splash");
+<<<<<<< Updated upstream
+ 
+            //spawnNewObstacle();
+            float scale = ScaleToHighDPI(1.3f);
+
+			Tiles.Content = Content;
+=======
+            Texture2D heart = Content.Load<Texture2D>("heart");
+
+            Vector2 spritePosition = new Vector2(700, 500);// posicao do botao da torre
+            Vector2 spritePosition2 = new Vector2(700, 500);// posicao do botao da torre
+
+            tower1 = new Towers(GraphicsDevice, "Content/tower.png", ScaleToHighDPI(0.3f));//(GraphicsDevice graphicsDevice, string textureName, float scale, Vector2 position)
+            button = new Button(spritePosition, GraphicsDevice, "Content/tower.png", ScaleToHighDPI(0.3f));//Vector2 position, GraphicsDevice graphicsDevice, string textureName, float scale
+            button2 = new Button(spritePosition2, GraphicsDevice, "Content/heart.png", ScaleToHighDPI(0.3f));//Vector2 position, GraphicsDevice graphicsDevice, string textureName, float scale
+
+            spawnNewObstacle();
+            float scale = ScaleToHighDPI(1.3f);
+
+            button.OnPress += new EventHandler(button_Onpress);
+            OnDecrementLives += new EventHandler(OnDecrement_Lives);
+>>>>>>> Stashed changes
+
+        }
+
+        /* Método de descarga de elementos externos */
+        protected override void UnloadContent()
+        {
+        }
+
+        /* Método de atualização do status dos elementos */
+        protected override void Update(GameTime gameTime)
+        {
+            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            KeyboardHandler();
+<<<<<<< Updated upstream
+            //enemies[0].Update(elapsedTime);
+=======
+            enemies[0].Update(elapsedTime);
+            VerifyIfEnemyIsOutOfScreen();
+            tower1.Update(elapsedTime);
+            button.Update(elapsedTime);
+           
+>>>>>>> Stashed changes
+            base.Update(gameTime);
+        }
+
+        /* Metodo de desenho dos elementos gráficos */
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            /* Inicializa o ambiente de operações de desenho na tela */
+            spriteBatch.Begin();
+<<<<<<< Updated upstream
+			// spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White); 
+            //enemies[0].Draw(spriteBatch);
+  
+=======
+            spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
+
+            enemies[0].Draw(spriteBatch);
+            tower1.DrawPreview(spriteBatch);
+            button.Draw(spriteBatch);
+
+            button2.DrawHearts(spriteBatch, spritePositionHearths);
+            button2.DrawHearts(spriteBatch, spritePositionHearths2);
+            button2.DrawHearts(spriteBatch, spritePositionHearths3);
+
+>>>>>>> Stashed changes
+            /* Se o jogo ainda não começou, fica em tela de início */
+            if (!gameStarted)
+            {
+                /* Carrega tela inicial e espera resposta do jogador */
+                spriteBatch.Draw(startGameSplash, new Rectangle(0, 0,
+                (int)screenWidth, (int)screenHeight), Color.White);
+       
+            }
+            else
+            {
+<<<<<<< Updated upstream
+				/* Desenhar aqui restante dos elementos do início do jogo: vidas, timer, pontuação */
+				//spriteBatch.Draw(background, new Rectangle(0, 0,
+				// (int)screenWidth, (int)screenHeight), Color.Transparent);
+				map.Draw(spriteBatch);
+			}
+				
+=======
+
+                /* Desenhar aqui restante dos elementos do início do jogo: vidas, timer, pontuação */
+                //spriteBatch.Draw(background, new Rectangle(0, 0,
+                // (int)screenWidth, (int)screenHeight), Color.Transparent);
+            }
+>>>>>>> Stashed changes
+
+            spriteBatch.End();
+
+            /* Encerra o ambiente de operações de desenho na tela */
+            base.Draw(gameTime);
+        }
+
+        /* Metodo de identificação e escalonamento conforme dpis da tela utilizada */
+        public float ScaleToHighDPI(float f)
+        {
+            DisplayInformation d = DisplayInformation.GetForCurrentView();
+            f *= (float)d.RawPixelsPerViewPixel;
+            return f;
+        }
+
+        /* Metodo de leitura do teclado */
+        void KeyboardHandler()
+        {
+            KeyboardState state = Keyboard.GetState();
+
+            /* Encerra o jogo se a tecla ESC for pressionada */
+            if (state.IsKeyDown(Keys.Escape))
+            {
+                Exit();
+            }
+
+            /* Inicia o jogo se a tecla Enter for pressionada */
+            if (!gameStarted)
+            {
+                if (state.IsKeyDown(Keys.Enter))
+                {
+                    StartGame();
+                    gameStarted = true;
+                    //gameOver = false;
+                }
+                return;
+            }
+            /* Reinicia se for pressionado enter após game over */
+            /*
+            if (gameOver && state.IsKeyDown(Keys.Enter))
+                {
+                    StartGame();
+                    gameStarted = true;
+                    gameOver = false;
+                    win = false;
+                }
+
+            if (win && state.IsKeyDown(Keys.Enter))
+            {
+                StartGame();
+                gameStarted = true;
+                gameOver = false;
+                win = false;
+            }
+            */
+        }
+
+        /* Método de início do jogo */
+        public void StartGame()
+        {
+<<<<<<< Updated upstream
+            //enemies[0].x = 10;
+            //enemies[0].y = (screenHeight / 3) - 50; //hardcoded, definir constante
+=======
+            enemies[0].x = 10;
+            enemies[0].y = (screenHeight / 3) - 50; //hardcoded, definir constante colocar aqui a posicao inicial do coiso?
+>>>>>>> Stashed changes
+
+            button.x =  (screenWidth/9) * 8;
+            button.y = (screenHeight/9 * 8);
+
+            button2.x = (screenWidth / 2) + 150; //hardcoded posicao coraçoes
+            button2.y = (screenHeight / 9 * 8);
+
+            // a quantidade de corações aqui deve ser renderizada n vezes conforme a variavel hearthsToRender
+            spritePositionHearths = new Vector2((screenWidth / 2) + 150, (screenHeight / 9 * 8));
+            spritePositionHearths2 = new Vector2((screenWidth / 2) + 225, (screenHeight / 9 * 8));
+            spritePositionHearths3 = new Vector2((screenWidth / 2) + 300, (screenHeight / 9 * 8));
+            
+        }
+        public void spawnNewObstacle()
+        {
+            //Instanciar aqui os tipos de inimigos, e calcular sua movimentação com base no mapa
+
+<<<<<<< Updated upstream
+            Enemy crow;
+            crow = new Enemy(GraphicsDevice, "Content/black_enemy.png", ScaleToHighDPI(0.3f));
+
+            crow.x = -screenWidth / 17; //definir constante
+            crow.dX = (float)(acelerationToRight * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
+=======
+            Enemies crow;
+            crow = new Enemies(GraphicsDevice, "Content/orange_cute_enemy.png", ScaleToHighDPI(0.3f));
+
+            crow.x = streeLeftLimit; //definir constante
+            crow.dX = (float)(aceleretionToRigth * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
+>>>>>>> Stashed changes
+
+            crow.angle = 0; //angulo pra direita
+
+            enemies.Add(crow);
+        }
+
+        public void VerifyIfEnemyIsOutOfScreen()
+        {
+           // for (int i = 0; i < enemies.Count; i++) //generalizar depois para todos os inimigos!
+            //{
+                if ((enemies[0].x > streeRigthLimit))
+                {
+                    lives--;
+                // Fire the OnPress event. //lembrar de signal slot
+                    OnDecrementLives?.Invoke(this, EventArgs.Empty);
+            }
+            //}
+        }
+
+        public void startScreenConfigs()
+        {
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+            screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
+            screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
+            this.IsMouseVisible = false;
+            streeLeftLimit = -screenWidth / 17;
+            streeRigthLimit = screenWidth + screenWidth / 17;
+        }
+
+        private void  button_Onpress(object sender, EventArgs e)
+        {
+
+        }
+        private void OnDecrement_Lives(object sender, EventArgs e)
+        {
+            //inserir aqui alguma lógica para renderizar a quantidade de corações necessária
+            //heartsToRender = lives;
+        }
+    }
+}

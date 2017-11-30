@@ -1,0 +1,165 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
+using Windows.Graphics.Display;
+
+namespace MonoGame2D
+{
+    class Tower : Struct
+    {
+<<<<<<< Updated upstream:TowerDefenseGameProgramming/MonoGame2D/Classes/Tower.cs
+=======
+        private MouseState mouseState;
+        private MouseState oldState;
+        private Texture2D towerTextures;
+
+        GraphicsDevice graphicsDevice;
+
+        // Tower placement.
+        private int cellX;
+        private int cellY;
+
+        // Imagem do sprite
+        public Texture2D texture
+        {
+            get;
+        }
+
+        // Coordenadas x centrais do objeto
+        public float x
+        {
+            get;
+            set;
+        }
+
+        // Coordenadas y centrais do objeto
+        public float y
+        {
+            get;
+            set;
+        }
+
+        // Angulo central do objeto
+        public float angle
+        {
+            get;
+            set;
+        }
+
+
+        // Escala do sprite
+        public float scale
+        {
+            get;
+            set;
+        }
+
+>>>>>>> Stashed changes:TowerDefenseGameProgramming/MonoGame2D/Towers.cs
+        // Construtor
+        public Tower(GraphicsDevice graphicsDevice, string textureName, float scale)
+        {
+            this.scale = scale;
+            var stream = TitleContainer.OpenStream(textureName);
+            texture = Texture2D.FromStream(graphicsDevice, stream);
+
+        }
+
+        // Renderiza o objeto
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            // Determina sua posição
+            Vector2 spritePosition = new Vector2(this.x, this.y);
+            // Renderiza
+            spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
+        }
+
+        public void Update(float elapsedTime)
+        {
+            mouseState = Mouse.GetState();
+
+            cellX = (int)(mouseState.X ); // Convert the position of the mouse
+            cellY = (int)(mouseState.Y ); // from array space to level space
+
+            if (mouseState.LeftButton == ButtonState.Released
+                && oldState.LeftButton == ButtonState.Pressed) //antes pressionado, agora soltou. Deve adicionar uma torre no cenário
+            {
+                addTower();
+            }
+
+            //foreach (Tower tower in towers)
+            //{
+            //    // Make sure the tower has no targets.
+            //    if (tower.HasTarget == false)
+            //    {
+            //        tower.GetClosestEnemy(enemies);
+            //    }
+
+            //    tower.Update(gameTime);
+            //}
+            //tower.Update(gameTime);
+            oldState = mouseState; // Set the oldState so it becomes the state of the previous frame.
+        }
+
+    public void addTower()
+    {
+       // Towers towerToAdd = null;
+ 
+      //  towerToAdd = new Towers(graphicsDevice, "", ScaleToHighDPI(0.3f));
+
+        // Only add the tower if there is a space and if the player can afford it.
+        // if (IsCellClear() == true && towerToAdd.Cost <= money)
+        // {
+        //  towers.Add(towerToAdd);
+        // money -= towerToAdd.Cost;
+
+            // Reset the newTowerType field.
+            // newTowerType = string.Empty;
+            // }
+
+            // else
+            // {
+            // newTowerType = string.Empty;
+            // }
+        }
+
+    public void DrawPreview(SpriteBatch spriteBatch)
+        {
+            // Draw the tower preview.
+           // if (string.IsNullOrEmpty(newTowerType) == false)
+            //{
+                int cellX = (int)(mouseState.X); // Convert the position of the mouse
+                int cellY = (int)(mouseState.Y); // from array space to level space
+
+            //int tileX = cellX; // Convert from array space to level space
+            //int tileY = cellY; // Convert from array space to level space
+
+            //Texture2D previewTexture = towerTextures;
+            Vector2 spritePosition = new Vector2(cellX, cellY);
+
+            //spriteBatch.Draw(texture, new Rectangle(cellX, cellY,
+             //       texture.Width, texture.Height), Color.White);
+
+            spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
+
+            // }
+        }
+
+        public float ScaleToHighDPI(float f)
+        {
+            DisplayInformation d = DisplayInformation.GetForCurrentView();
+            f *= (float)d.RawPixelsPerViewPixel;
+            return f;
+        }
+
+        // Destrutor
+        ~Tower()
+        {
+
+        }
+    }
+}

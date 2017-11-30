@@ -1,64 +1,117 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MonoGame2D
 {
-    public class Enemy : Struct
+    public class Enemy : Sprite
     {
-		public float dX; // Aceleração em X do obstáculo
-		public float dY; // Aceleração em Y do obstáculo
+        private Queue<Vector2> waypoints = new Queue<Vector2>();
 
-		/* Getters */
-		public float GetDX()
-		{
-			return dX;
-		}
+        protected float startHealth;
+        protected float currentHealth;
+        protected bool outOfScreen = false;
 
-		public float GetDY()
-		{
-			return dY;
-		}
+        public bool alive = true;
 
-		/* Setters */
-		public void SetDX(float dX)
-		{
-			this.dX = dX;
-		}
+        protected float speed = 0.5f;
+        protected int bountyGiven;
 
-		public void SetDY(float dY)
-		{
-			this.dY = dY;
-		}
-
-		// Construtor
-		public Enemy(GraphicsDevice graphicsDevice, string textureName, float scale)
+        public bool IsAlive()
         {
-
-            this.scale = scale;
-            var stream = TitleContainer.OpenStream(textureName);
-            texture = Texture2D.FromStream(graphicsDevice, stream);
+            return alive;
+        }
+        public bool IsOutOfScreen()
+        {
+            return outOfScreen;
         }
 
-        public void Update(float elapsedTime)
+        public float CurrentHealth
         {
-            this.x = this.x + this.dX * 3;
-            this.y = this.y + this.dY * 3;
+            get { return currentHealth; }
+            set { currentHealth = value; }
+        }
+
+        public bool IsDead
+        {
+            get { return currentHealth <= 0; }
+            set { currentHealth  = 0; }
+        }
+        public int BountyGiven
+        {
+            get { return bountyGiven; }
+        }
+
+        public float DistanceToDestination
+        {
+            get { return Vector2.Distance(position, waypoints.Peek()); }
+        }
+
+        public Enemy(Texture2D texture, Vector2 position, float health, int bountyGiven, float speed)
+            : base(texture, position)
+        {
+            this.startHealth = health;
+            this.currentHealth = startHealth;
+
+            this.bountyGiven = bountyGiven;
+            this.speed = speed;
+        }
        
+        public void SetWaypoints(Queue<Vector2> waypoints)
+        {
+            foreach (Vector2 waypoint in waypoints)
+                this.waypoints.Enqueue(waypoint);
+
+            this.position = this.waypoints.Dequeue();
         }
 
-        // Renderiza o(s) inimigo(s)
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Update(GameTime gameTime)
         {
-           
-            // Determina posição dos inimigos
-            Vector2 spritePosition = new Vector2(this.x, this.y);
-            // Desenha o sprite
-            spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
+            base.Update(gameTime);
+
+            if (waypoints.Count > 0)
+            {
+                if (DistanceToDestination < 1f)
+                {
+                    position = waypoints.Peek();
+                    waypoints.Dequeue();
+                }
+
+                else
+                {
+                    Vector2 direction = waypoints.Peek() - position;
+                    direction.Normalize();
+
+                    velocity = Vector2.Multiply(direction, speed);
+
+                    position += velocity;
+                }
+            }
+
+            else
+            {
+                outOfScreen = true;
+                alive = false;
+            }
+
+            if (currentHealth <= 0)
+                alive = false;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (alive)
+            {
+                float healthPercentage = (float)currentHealth / (float)startHealth;              
+
+                base.Draw(spriteBatch, Color.White);
+            }
+            if (outOfScreen == true || alive == false)
+                alive = false; 
+                base.Draw(spriteBatch, Color.Transparent);
         }
     }
 }

@@ -8,174 +8,221 @@ using Windows.UI.ViewManagement;
 
 namespace MonoGame2D
 {
-
-    static class Constants
+    public class Contants
     {
-        // Constante de diretorio ativo
-        public const string directory = "Content";
-
-        // Contantes de movimentação dos inimigos
-        public const float acelerationFactor = (float)0.25; 
-        public const float decAceleration = (float)0.2;
-        public const float rightAceleration = 1; // Direção da aceleração 
-        public const float angleObstacleToRight = 0; // Ângulo da aceleração
-        // Constantes de controle de loop do jogo junto a atualização de obstaculos
-        
-
-        // Constantes de valores default de vida,nivel, pontos e etc do jogo
-        public const int initialLives = 5;
-        public const int initialLevel = 0;
-        public const int initialScore = 0;
-        public const int maxLevel = 8;
-
-        // Constantes de nome de arquivos a serem caregados
-        public const string towerSprite = "Content/tower.png";
-        public const string orangeCuteSprite = "Content/orange_cute_enemy.png";
-        public const string orangeOnionSprite = "Content/orange_onion_enemy.png";
-        public const string blackEnemySprites = "Content/black_enemy.png";
-        public const string startSprite = "start-splash";
+        public static int MAX_ENEMIES = 3;
+        public static int MAX_LIVES = 4;
+        public static int MAX_GOLD = 50;
 
     }
 
     public class Game1 : Game
     {
-        // Declaração de variaveis globias dentre a classe
-        // Variaveis de ambiente grafico
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        SpriteFont stateFont;
-        SpriteFont scoreFont;
-        Texture2D startGameSplash;
-        Texture2D background;
-        float scale;
-		Map map;
 
-        // Variaveis de posicionamento
+        Random random = new Random();
+
+        Map level = new Map();
+
+        List<Enemy> enemies = new List<Enemy>();
+
+        List<Texture2D> enemyTextures = new List<Texture2D>();
+
+        Player player;
+        Toolbar toolBar;
+
         float screenWidth;
         float screenHeight;
-
-        // Variaveis posicionamento angular e aceleração todas já iniializadas aqui
-        float angleToRight = Constants.angleObstacleToRight;
-        float acelerationToRight = Constants.rightAceleration;
-
-        // Variaveis de controle de estado de jogo
-        bool gameStarted;
         bool gameOver;
-        bool win;
-        int score;
-        int lives;
-        int level;
+        bool gameStarted = false;
 
-        // Variavel para geração ramdomica
-        Random random;
+        Texture2D startGameSplash;
+        Texture2D gameOverSplash;
 
-        // Declaração da lista de inimigos e torres
-        List<Enemy> enemies = new List<Enemy>();
-        List<Tower> towers = new List<Tower>();
-
-        // Fim da declaração de globais da classe
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-         
-            IsMouseVisible = true;
-            Content.RootDirectory = Constants.directory;
+            Content.RootDirectory = "Content";
+            startConfigScreen();
+            graphics.PreferredBackBufferWidth = level.Width * 64;
+            graphics.PreferredBackBufferHeight = 256 + level.Height * 64;
+            //graphics.ApplyChanges();
         }
 
-        /* Método de inicialização */
         protected override void Initialize()
         {
+            this.IsMouseVisible = true;
+            startConfigScreen();
             base.Initialize();
+        }
 
-            /* Inicializa parametros de jogo */
-            gameStarted = false;
-            //gameOver = false;
-            //win = false;
-
-            random = new Random();
-
-            /* Inicializa escala de frames da tela utilizada
-               Inicializa em tela cheia
-               Inicializa com ponteiro do mouse oculto */
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
-            screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
-            screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
-
-			map = new Map();
-
-			map.Generate(new int[,]{
-				{0,0,0,1},
-				{0,0,1,2},
-				{0,1,2,2},
-				{1,2,2,2},
-			}, 64);
-
-		}
-
-        /* Método de carga de elementos externos */
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            /* Carrega texturas de do jogo */
+            Texture2D topBar = Content.Load<Texture2D>("menu");
+            SpriteFont font = Content.Load<SpriteFont>("GameState");       
+
+            toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 64));
+
             startGameSplash = Content.Load<Texture2D>("start-splash");
- 
-            //spawnNewObstacle();
-            float scale = ScaleToHighDPI(1.3f);
+            gameOverSplash = Content.Load<Texture2D>("GameOver");
 
-			Tiles.Content = Content;
+            Texture2D grass = Content.Load<Texture2D>("grass");
+            Texture2D path = Content.Load<Texture2D>("path");
+            Texture2D tree1 = Content.Load<Texture2D>("tree1");
+            Texture2D tree2 = Content.Load<Texture2D>("tree2");
+            
+            enemyTextures.Add(Content.Load<Texture2D>("black_enemy"));
+            enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
+            enemyTextures.Add(Content.Load<Texture2D>("orange_onion_enemy"));
 
+            level.AddTexture(grass);
+            level.AddTexture(path);
+            level.AddTexture(tree1);
+            level.AddTexture(tree2);
+
+            Texture2D towerTexture = Content.Load<Texture2D>("tower");
+            Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
+
+            player = new Player(level, towerTexture, bulletTexture);
+           
         }
 
-        /* Método de descarga de elementos externos */
         protected override void UnloadContent()
         {
+
         }
 
-        /* Método de atualização do status dos elementos */
+        float spawn = 0;
         protected override void Update(GameTime gameTime)
         {
-            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardHandler();
-            //enemies[0].Update(elapsedTime);
+
+            UpdateEnemies(gameTime);
+
+            LoadEnemies();
+
+            player.Update(gameTime, enemies);
+
             base.Update(gameTime);
         }
 
-        /* Metodo de desenho dos elementos gráficos */
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            /* Inicializa o ambiente de operações de desenho na tela */
             spriteBatch.Begin();
-			// spriteBatch.Draw(background, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White); 
-            //enemies[0].Draw(spriteBatch);
-  
-            /* Se o jogo ainda não começou, fica em tela de início */
+
+            level.Draw(spriteBatch);
+            
+            DrawEnemies();
+
+            player.Draw(spriteBatch);
+
+            toolBar.Draw(spriteBatch, player);
+
             if (!gameStarted)
             {
-                /* Carrega tela inicial e espera resposta do jogador */
-                spriteBatch.Draw(startGameSplash, new Rectangle(0, 0,
-                (int)screenWidth, (int)screenHeight), Color.White);
-       
+                spriteBatch.Draw(startGameSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
             else
             {
-				/* Desenhar aqui restante dos elementos do início do jogo: vidas, timer, pontuação */
-				//spriteBatch.Draw(background, new Rectangle(0, 0,
-				// (int)screenWidth, (int)screenHeight), Color.Transparent);
-				map.Draw(spriteBatch);
-			}
-				
+            }
+            if (gameOver)
+            {
+                spriteBatch.Draw(gameOverSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
+            }
 
             spriteBatch.End();
 
-            /* Encerra o ambiente de operações de desenho na tela */
             base.Draw(gameTime);
         }
 
-        /* Metodo de identificação e escalonamento conforme dpis da tela utilizada */
+        void KeyboardHandler()
+        {
+            KeyboardState state = Keyboard.GetState();
+            if (state.IsKeyDown(Keys.Escape))
+            {
+                Exit();
+            }
+            /* Starts the game if the Enter key was pressed */
+            if (!gameStarted)
+            {
+                if (state.IsKeyDown(Keys.Enter))
+                {
+                    gameStarted = true;
+                }
+                return;
+            }
+            
+             /* Restarts the game if the Enter key was pressed after a Game Over*/
+            if (gameOver && state.IsKeyDown(Keys.Enter))
+            {
+                restartTheGame();           
+
+            }
+
+        }
+
+        protected void LoadEnemies()
+        {
+            if (spawn >= 3) // Respawns an enemy every second
+            {
+                spawn = 0;
+                if (enemies.Count <= Contants.MAX_ENEMIES) // Limits the respawn
+                {
+                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero, 100, 10, 1f);
+                    enemy.SetWaypoints(level.Waypoints);
+
+                    enemies.Add(enemy);
+                }
+            }
+        
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].IsOutOfScreen())
+                {
+                    enemies.RemoveAt(i);
+                    i--;
+
+                    player.setLives(player.getLives() - 1);
+                    if (player.getLives() == 0)
+                    {
+                        gameOver = true;
+                    }
+                }
+            }
+
+        }
+        protected void DrawLives()
+        {
+
+        }
+        protected void UpdateEnemies(GameTime gameTime)
+        {
+            foreach (Enemy enemy in enemies)
+                enemy.Update(gameTime);
+
+        }
+
+        protected void DrawEnemies()
+        {
+            foreach (Enemy enemy in enemies)
+                enemy.Draw(spriteBatch);
+        }
+
+        protected void startConfigScreen()
+        {
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+            screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
+            screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
+        }
+
         public float ScaleToHighDPI(float f)
         {
             DisplayInformation d = DisplayInformation.GetForCurrentView();
@@ -183,70 +230,14 @@ namespace MonoGame2D
             return f;
         }
 
-        /* Metodo de leitura do teclado */
-        void KeyboardHandler()
+        protected void restartTheGame()
         {
-            KeyboardState state = Keyboard.GetState();
-
-            /* Encerra o jogo se a tecla ESC for pressionada */
-            if (state.IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
-
-            /* Inicia o jogo se a tecla Enter for pressionada */
-            if (!gameStarted)
-            {
-                if (state.IsKeyDown(Keys.Enter))
-                {
-                    StartGame();
-                    gameStarted = true;
-                    //gameOver = false;
-                }
-                return;
-            }
-            /* Reinicia se for pressionado enter após game over */
-            /*
-            if (gameOver && state.IsKeyDown(Keys.Enter))
-                {
-                    StartGame();
-                    gameStarted = true;
-                    gameOver = false;
-                    win = false;
-                }
-
-            if (win && state.IsKeyDown(Keys.Enter))
-            {
-                StartGame();
-                gameStarted = true;
-                gameOver = false;
-                win = false;
-            }
-            */
-        }
-
-        /* Método de início do jogo */
-        public void StartGame()
-        {
-            //enemies[0].x = 10;
-            //enemies[0].y = (screenHeight / 3) - 50; //hardcoded, definir constante
+            gameStarted = true;
+            gameOver = false;
+            player.setLives(Contants.MAX_LIVES);
+            player.setGold(Contants.MAX_GOLD);
+            enemies.Clear();
 
         }
-        public void spawnNewObstacle()
-        {
-            //Instanciar aqui os tipos de inimigos, e calcular sua movimentação com base no mapa
-
-            Enemy crow;
-            crow = new Enemy(GraphicsDevice, "Content/black_enemy.png", ScaleToHighDPI(0.3f));
-
-            crow.x = -screenWidth / 17; //definir constante
-            crow.dX = (float)(acelerationToRight * (Constants.acelerationFactor)); // 1 é a aceleração pra frente, 0,25 é fator de aceleração, street + 2
-
-            crow.angle = 0; //angulo pra direita
-
-            enemies.Add(crow);
-        }
-
-
     }
 }

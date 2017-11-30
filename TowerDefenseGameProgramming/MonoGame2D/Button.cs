@@ -148,25 +148,12 @@ namespace Monogame2D
         /// </summary>
         /// <param name="spriteBatch">A SpriteBatch that has been started</param>
         public void Draw(SpriteBatch spriteBatch)
-        {
+        {   
             //spriteBatch.Draw(texture, bounds, Color.White);
             Vector2 spritePosition = new Vector2(this.x, this.y);
             spriteBatch.Draw(texture, spritePosition, null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
 
         }
 
-        public void DrawHearts(SpriteBatch spriteBatch, Vector2 spritePosition)
-        {
-            //spriteBatch.Draw(texture, bounds, Color.White);
-
-          //  if (lives <= 3 && lives > 0)
-           // {
-                
-               // this.x = x + 150;
-                spriteBatch.Draw(texture, spritePosition, null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
-                
-            //}
-           // lives--;
-        }
     }
 }

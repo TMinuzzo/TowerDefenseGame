@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-26T22:03:20.031</Modified>
+      <Modified>2017-11-26T19:09:07.387</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\MonoGame2D.exe">
       <PackagePath>entrypoint\MonoGame2D.exe</PackagePath>
-      <Modified>2017-11-26T22:02:40.881</Modified>
+      <Modified>2017-11-26T19:09:06.754</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -481,13 +481,16 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\background.png">
       <PackagePath>Content\background.png</PackagePath>
-      <Modified>2017-11-26T21:17:54.764</Modified>
+      <Modified>2017-11-25T19:18:10.221</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\black_enemy.png">
       <PackagePath>Content\black_enemy.png</PackagePath>
       <Modified>2017-11-26T21:17:54.987</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\orange_cute_enemy.png">
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\heart.png">
+      <PackagePath>Content\heart.png</PackagePath>
+      <Modified>2017-11-25T19:21:45.137</Modified>
+    </AppxPackagedFile>
       <PackagePath>Content\orange_cute_enemy.png</PackagePath>
       <Modified>2017-11-26T21:17:55.012</Modified>
     </AppxPackagedFile>
@@ -533,9 +536,9 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <Modified>2017-11-26T21:17:54.754</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\Tile1.jpg">
-      <PackagePath>Content\Tile1.jpg</PackagePath>
-      <Modified>2017-11-26T21:50:22.402</Modified>
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\Map1.xml">
+      <PackagePath>Content\Map1.xml</PackagePath>
+      <Modified>2017-11-26T17:39:07.203</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\Tile2.jpg">
       <PackagePath>Content\Tile2.jpg</PackagePath>
@@ -547,7 +550,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\background.xnb">
       <PackagePath>Content\background.xnb</PackagePath>
-      <Modified>2017-11-26T21:43:01.041</Modified>
+      <Modified>2017-11-25T19:19:15.630</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\black_enemy.xnb">
       <PackagePath>Content\black_enemy.xnb</PackagePath>
@@ -558,6 +561,10 @@
       <Modified>2017-11-26T21:43:02.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\orange_cute_enemy.xnb">
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\heart.xnb">
+      <PackagePath>Content\heart.xnb</PackagePath>
+      <Modified>2017-11-25T20:05:45.976</Modified>
+    </AppxPackagedFile>
       <PackagePath>Content\orange_cute_enemy.xnb</PackagePath>
       <Modified>2017-11-26T21:43:02.791</Modified>
     </AppxPackagedFile>
@@ -569,9 +576,9 @@
       <PackagePath>Content\start-splash.xnb</PackagePath>
       <Modified>2017-11-26T21:43:03.135</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Tile1.xnb">
-      <PackagePath>Content\Tile1.xnb</PackagePath>
-      <Modified>2017-11-26T21:52:44.005</Modified>
+    <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\tower.xnb">
+      <PackagePath>Content\tower.xnb</PackagePath>
+      <Modified>2017-11-25T17:22:23.203</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Tile2.xnb">
       <PackagePath>Content\Tile2.xnb</PackagePath>
@@ -620,11 +627,11 @@
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-26T21:52:51.693</Modified>
+      <Modified>2017-11-26T19:01:05.871</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Core\MonoGame2D.exe">
       <PackagePath>MonoGame2D.exe</PackagePath>
-      <Modified>2017-11-26T22:03:20.025</Modified>
+      <Modified>2017-11-26T19:09:07.372</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
