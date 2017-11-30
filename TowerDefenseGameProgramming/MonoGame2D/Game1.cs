@@ -9,20 +9,17 @@ using Windows.UI.ViewManagement;
 namespace MonoGame2D
 {
     public class Contants
-    {
+	{
         public static int MAX_ENEMIES = 3;
         public static int MAX_LIVES = 4;
         public static int MAX_GOLD = 50;
+	}
 
-    }
-
-    public class Game1 : Game
+	public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
         Random random = new Random();
-
         Map level = new Map();
 
         List<Enemy> enemies = new List<Enemy>();
@@ -41,7 +38,9 @@ namespace MonoGame2D
         Texture2D gameOverSplash;
 
 
-        public Game1()
+		Player player;
+
+		public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -55,7 +54,7 @@ namespace MonoGame2D
         {
             this.IsMouseVisible = true;
             startConfigScreen();
-            base.Initialize();
+			base.Initialize();
         }
 
         protected override void LoadContent()
@@ -67,7 +66,6 @@ namespace MonoGame2D
 
             toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 64));
 
-            startGameSplash = Content.Load<Texture2D>("start-splash");
             gameOverSplash = Content.Load<Texture2D>("GameOver");
 
             Texture2D grass = Content.Load<Texture2D>("grass");
@@ -89,7 +87,7 @@ namespace MonoGame2D
 
             player = new Player(level, towerTexture, bulletTexture);
            
-        }
+		}
 
         protected override void UnloadContent()
         {
@@ -100,7 +98,7 @@ namespace MonoGame2D
         protected override void Update(GameTime gameTime)
         {
             spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            KeyboardHandler();
+
 
             UpdateEnemies(gameTime);
 
@@ -108,14 +106,14 @@ namespace MonoGame2D
 
             player.Update(gameTime, enemies);
 
-            base.Update(gameTime);
+			base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(); 
 
             level.Draw(spriteBatch);
             
@@ -125,19 +123,15 @@ namespace MonoGame2D
 
             toolBar.Draw(spriteBatch, player);
 
-            if (!gameStarted)
-            {
                 spriteBatch.Draw(startGameSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
-            }
-            else
-            {
+			DrawEnemies();
             }
             if (gameOver)
             {
                 spriteBatch.Draw(gameOverSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
 
-            spriteBatch.End();
+			spriteBatch.End();
 
             base.Draw(gameTime);
         }
@@ -221,7 +215,7 @@ namespace MonoGame2D
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
             screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
-        }
+		}
 
         public float ScaleToHighDPI(float f)
         {

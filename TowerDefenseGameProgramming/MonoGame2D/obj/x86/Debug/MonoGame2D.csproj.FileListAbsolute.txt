@@ -1494,3 +1494,14 @@ C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGam
 C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\obj\x86\Debug\MonoGame2D.csprojResolveAssemblyReference.cache
 C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\GameOver.xnb
 C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\Walking.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\blackEnemy.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\enemyCute.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\enemyOnion.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\grass.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\heart.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\path.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\tower.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\tree1.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\tree2.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\bullet.xnb
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\bin\WindowsUniversal\x86\Debug\Content\leaf.xnb

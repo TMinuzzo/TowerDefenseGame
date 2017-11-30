@@ -54,7 +54,7 @@ namespace MonoGame2D
 
         public virtual void Draw(SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.Draw(texture, center, null, color, 0, origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, center, null, color, rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
     }
 }

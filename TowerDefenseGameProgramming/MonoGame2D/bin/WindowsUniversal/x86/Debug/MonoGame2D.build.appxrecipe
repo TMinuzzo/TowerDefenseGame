@@ -358,23 +358,41 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\MonoGame\v3.0\Assemblies\WindowsUniversal\SharpDX.Direct2D1.dll">
       <PackagePath>SharpDX.Direct2D1.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\background.png">
-      <PackagePath>Content\background.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\blackEnemy.png">
+      <PackagePath>Content\blackEnemy.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\black_enemy.png">
-      <PackagePath>Content\black_enemy.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bullet.png">
+      <PackagePath>Content\bullet.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\orange_cute_enemy.png">
-      <PackagePath>Content\orange_cute_enemy.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\enemyCute.png">
+      <PackagePath>Content\enemyCute.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\orange_onion_enemy.png">
-      <PackagePath>Content\orange_onion_enemy.png</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\enemyOnion.png">
+      <PackagePath>Content\enemyOnion.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\grass.png">
+      <PackagePath>Content\grass.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\heart.png">
+      <PackagePath>Content\heart.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\leaf.png">
+      <PackagePath>Content\leaf.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\path.png">
+      <PackagePath>Content\path.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\start-splash.png">
       <PackagePath>Content\start-splash.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\tower.png">
       <PackagePath>Content\tower.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\tree1.png">
+      <PackagePath>Content\tree1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\tree2.png">
+      <PackagePath>Content\tree2.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -399,23 +417,32 @@
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\Tile1.jpg">
-      <PackagePath>Content\Tile1.jpg</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\Tile2.jpg">
-      <PackagePath>Content\Tile2.jpg</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\background.xnb">
-      <PackagePath>Content\background.xnb</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\blackEnemy.xnb">
+      <PackagePath>Content\blackEnemy.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\black_enemy.xnb">
-      <PackagePath>Content\black_enemy.xnb</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\bullet.xnb">
+      <PackagePath>Content\bullet.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\enemyCute.xnb">
+      <PackagePath>Content\enemyCute.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\enemyOnion.xnb">
+      <PackagePath>Content\enemyOnion.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\GameState.xnb">
       <PackagePath>Content\GameState.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\grass.xnb">
+      <PackagePath>Content\grass.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\heart.xnb">
+      <PackagePath>Content\heart.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\leaf.xnb">
+      <PackagePath>Content\leaf.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\orange_cute_enemy.xnb">
       <PackagePath>Content\orange_cute_enemy.xnb</PackagePath>
@@ -423,14 +450,20 @@
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\orange_onion_enemy.xnb">
       <PackagePath>Content\orange_onion_enemy.xnb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\path.xnb">
+      <PackagePath>Content\path.xnb</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\start-splash.xnb">
       <PackagePath>Content\start-splash.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Tile1.xnb">
-      <PackagePath>Content\Tile1.xnb</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\tower.xnb">
+      <PackagePath>Content\tower.xnb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Tile2.xnb">
-      <PackagePath>Content\Tile2.xnb</PackagePath>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\tree1.xnb">
+      <PackagePath>Content\tree1.xnb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\tree2.xnb">
+      <PackagePath>Content\tree2.xnb</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Content\bin\WindowsStoreApp\Content\background.xnb">
       <PackagePath>Content\Content\background.xnb</PackagePath>

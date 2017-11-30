@@ -100,29 +100,28 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
+<<<<<<< HEAD
+    <Compile Include="Button.cs" />
+    <Compile Include="Classes\AnimatedSprite.cs" />
+=======
+>>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
+    <Compile Include="Classes\ArrowTower.cs" />
+    <Compile Include="Classes\Bullet.cs" />
     <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Sprite.cs" />
     <Compile Include="Classes\Struct.cs" />
-    <Compile Include="Classes\Tiles.cs" />
+<<<<<<< HEAD
+    <Compile Include="Classes\Toolbar.cs" />
 =======
-    <Compile Include="Button.cs" />
-    <Compile Include="Enemies.cs" />
->>>>>>> Stashed changes
+    <Compile Include="Classes\Tower.cs" />
+>>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
-    <Compile Include="Layer.cs" />
-    <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Classes\Tower.cs" />
-=======
-    <Compile Include="Tile.cs" />
-    <Compile Include="Towers.cs" />
-    <Compile Include="XMLManager.cs" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -134,16 +133,25 @@
     <None Include="MonoGame2D_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\background.png" />
+<<<<<<< HEAD
     <Content Include="Content\black_enemy.png" />
+    <Content Include="Content\grass.png" />
     <Content Include="Content\heart.png" />
-    <Content Include="Content\orange_cute_enemy.png" />
     <Content Include="Content\orange_onion_enemy.png" />
+=======
+    <Content Include="Content\blackEnemy.png" />
+    <Content Include="Content\bullet.png" />
+    <Content Include="Content\enemyCute.png" />
+    <Content Include="Content\enemyOnion.png" />
+    <Content Include="Content\grass.png" />
+    <Content Include="Content\heart.png" />
+    <Content Include="Content\leaf.png" />
+    <Content Include="Content\path.png" />
+>>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
     <Content Include="Content\start-splash.png" />
-    <Content Include="Content\Tile1.jpg" />
-    <Content Include="Content\Tile2.jpg" />
     <Content Include="Content\tower.png" />
-    <Content Include="Content\Map1.xml" />
+    <Content Include="Content\tree1.png" />
+    <Content Include="Content\tree2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

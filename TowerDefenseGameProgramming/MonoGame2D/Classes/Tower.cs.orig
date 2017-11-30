@@ -5,161 +5,196 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
-using Windows.Graphics.Display;
 
 namespace MonoGame2D
 {
-    class Tower : Struct
+<<<<<<< HEAD
+    public class Tower : Sprite
     {
-<<<<<<< Updated upstream:TowerDefenseGameProgramming/MonoGame2D/Classes/Tower.cs
-=======
-        private MouseState mouseState;
-        private MouseState oldState;
-        private Texture2D towerTextures;
+        protected float bulletTimer; // How long ago was a bullet fired
+        protected List<Bullet> bulletList = new List<Bullet>();
+        protected Enemy target;
 
-        GraphicsDevice graphicsDevice;
-
-        // Tower placement.
-        private int cellX;
-        private int cellY;
-
-        // Imagem do sprite
-        public Texture2D texture
+        public Enemy Target
         {
-            get;
+            get { return target; }
         }
 
-        // Coordenadas x centrais do objeto
-        public float x
+        protected int cost; // How much will the tower cost to make
+        protected int damage; // The damage done to enemy's
+        protected float radius; // How far the tower can shoot
+
+        protected Texture2D bulletTexture;
+
+        public int Cost
         {
-            get;
-            set;
+            get { return cost; }
+        }
+        public int Damage
+        {
+            get { return damage; }
         }
 
-        // Coordenadas y centrais do objeto
-        public float y
+        public float Radius
         {
-            get;
-            set;
+            get { return radius; }
         }
 
-        // Angulo central do objeto
-        public float angle
+        public Tower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
+            : base(texture, position)
         {
-            get;
-            set;
+            this.bulletTexture = bulletTexture;
         }
 
 
-        // Escala do sprite
-        public float scale
+        public bool IsInRange(Vector2 position)
         {
-            get;
-            set;
+            return Vector2.Distance(center, position) <= radius;
         }
 
->>>>>>> Stashed changes:TowerDefenseGameProgramming/MonoGame2D/Towers.cs
-        // Construtor
-        public Tower(GraphicsDevice graphicsDevice, string textureName, float scale)
+        public void GetClosestEnemy(List<Enemy> enemies)
         {
-            this.scale = scale;
-            var stream = TitleContainer.OpenStream(textureName);
-            texture = Texture2D.FromStream(graphicsDevice, stream);
+            target = null;
+            float smallestRange = radius;
 
-        }
-
-        // Renderiza o objeto
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            // Determina sua posição
-            Vector2 spritePosition = new Vector2(this.x, this.y);
-            // Renderiza
-            spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
-        }
-
-        public void Update(float elapsedTime)
-        {
-            mouseState = Mouse.GetState();
-
-            cellX = (int)(mouseState.X ); // Convert the position of the mouse
-            cellY = (int)(mouseState.Y ); // from array space to level space
-
-            if (mouseState.LeftButton == ButtonState.Released
-                && oldState.LeftButton == ButtonState.Pressed) //antes pressionado, agora soltou. Deve adicionar uma torre no cenário
+            foreach (Enemy enemy in enemies)
             {
-                addTower();
+                if (Vector2.Distance(center, enemy.Center) < smallestRange)
+                {
+                    smallestRange = Vector2.Distance(center, enemy.Center);
+                    target = enemy;
+                }
             }
-
-            //foreach (Tower tower in towers)
-            //{
-            //    // Make sure the tower has no targets.
-            //    if (tower.HasTarget == false)
-            //    {
-            //        tower.GetClosestEnemy(enemies);
-            //    }
-
-            //    tower.Update(gameTime);
-            //}
-            //tower.Update(gameTime);
-            oldState = mouseState; // Set the oldState so it becomes the state of the previous frame.
         }
 
-    public void addTower()
-    {
-       // Towers towerToAdd = null;
- 
-      //  towerToAdd = new Towers(graphicsDevice, "", ScaleToHighDPI(0.3f));
-
-        // Only add the tower if there is a space and if the player can afford it.
-        // if (IsCellClear() == true && towerToAdd.Cost <= money)
-        // {
-        //  towers.Add(towerToAdd);
-        // money -= towerToAdd.Cost;
-
-            // Reset the newTowerType field.
-            // newTowerType = string.Empty;
-            // }
-
-            // else
-            // {
-            // newTowerType = string.Empty;
-            // }
-        }
-
-    public void DrawPreview(SpriteBatch spriteBatch)
+        protected void FaceTarget()
         {
-            // Draw the tower preview.
-           // if (string.IsNullOrEmpty(newTowerType) == false)
-            //{
-                int cellX = (int)(mouseState.X); // Convert the position of the mouse
-                int cellY = (int)(mouseState.Y); // from array space to level space
+            Vector2 direction = center - target.Center;
+            direction.Normalize();
 
-            //int tileX = cellX; // Convert from array space to level space
-            //int tileY = cellY; // Convert from array space to level space
-
-            //Texture2D previewTexture = towerTextures;
-            Vector2 spritePosition = new Vector2(cellX, cellY);
-
-            //spriteBatch.Draw(texture, new Rectangle(cellX, cellY,
-             //       texture.Width, texture.Height), Color.White);
-
-            spriteBatch.Draw(texture, spritePosition, null, Color.White, this.angle, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), SpriteEffects.None, 0f);
-
-            // }
+            rotation = (float)Math.Atan2(-direction.X, direction.Y);
         }
 
-        public float ScaleToHighDPI(float f)
+        public override void Update(GameTime gameTime)
         {
-            DisplayInformation d = DisplayInformation.GetForCurrentView();
-            f *= (float)d.RawPixelsPerViewPixel;
-            return f;
+            base.Update(gameTime);
+
+            bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (target != null)
+            {
+                FaceTarget();
+
+                if (!IsInRange(target.Center))
+                {
+                    target = null;
+                    bulletTimer = 0;
+                }
+            }
         }
 
-        // Destrutor
-        ~Tower()
+        public override void Draw(SpriteBatch spriteBatch)
         {
+            foreach (Bullet bullet in bulletList)
+                bullet.Draw(spriteBatch);
 
+            base.Draw(spriteBatch);
         }
+
     }
+=======
+	public class Tower : Sprite
+	{
+		protected float bulletTimer; // How long ago was a bullet fired
+		protected List<Bullet> bulletList = new List<Bullet>();
+		protected Enemy target;
+
+		public Enemy Target
+		{
+			get { return target; }
+		}
+
+		protected int cost; // How much will the tower cost to make
+		protected int damage; // The damage done to enemy's
+		protected float radius; // How far the tower can shoot
+
+		protected Texture2D bulletTexture;
+
+		public int Cost
+		{
+			get { return cost; }
+		}
+		public int Damage
+		{
+			get { return damage; }
+		}
+
+		public float Radius
+		{
+			get { return radius; }
+		}
+
+		public Tower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
+			: base(texture, position)
+		{
+			this.bulletTexture = bulletTexture;
+		}
+
+
+		public bool IsInRange(Vector2 position)
+		{
+			return Vector2.Distance(center, position) <= radius;
+		}
+
+		public void GetClosestEnemy(List<Enemy> enemies)
+		{
+			target = null;
+			float smallestRange = radius;
+
+			foreach (Enemy enemy in enemies)
+			{
+				if (Vector2.Distance(center, enemy.Center) < smallestRange)
+				{
+					smallestRange = Vector2.Distance(center, enemy.Center);
+					target = enemy;
+				}
+			}
+		}
+
+		protected void FaceTarget()
+		{
+			Vector2 direction = center - target.Center;
+			direction.Normalize();
+
+			rotation = (float)Math.Atan2(-direction.X, direction.Y);
+		}
+
+		public override void Update(GameTime gameTime)
+		{
+			base.Update(gameTime);
+
+			bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+			if (target != null)
+			{
+				FaceTarget();
+
+				if (!IsInRange(target.Center))
+				{
+					target = null;
+					bulletTimer = 0;
+				}
+			}
+		}
+
+		public override void Draw(SpriteBatch spriteBatch)
+		{
+			foreach (Bullet bullet in bulletList)
+				bullet.Draw(spriteBatch);
+
+			base.Draw(spriteBatch);
+		}
+
+	}
+>>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
 }

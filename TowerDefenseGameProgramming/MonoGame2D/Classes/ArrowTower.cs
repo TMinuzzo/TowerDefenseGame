@@ -8,17 +8,14 @@ using System.Threading.Tasks;
 
 namespace MonoGame2D
 {
-    public class ArrowTower : Tower
-    {
-        List<Enemy> enemies;
-        public event EventHandler IsDead;
-
-
+	public class ArrowTower : Tower
+	{
         public ArrowTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
             this.damage = 15; // Set the damage
             this.cost = 15;   // Set the initial cost
+
             this.radius = 150; // Set the radius
         }
 

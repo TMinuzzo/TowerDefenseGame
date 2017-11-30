@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace MonoGame2D
 {
     public class Tower : Sprite
-    {
+	{
         protected float bulletTimer; // How long ago was a bullet fired
         protected List<Bullet> bulletList = new List<Bullet>();
         protected Enemy target;
 
         public Enemy Target
-        {
+		{
             get { return target; }
-        }
+		}
 
         protected int cost; // How much will the tower cost to make
         protected int damage; // The damage done to enemy's
@@ -26,13 +26,13 @@ namespace MonoGame2D
         protected Texture2D bulletTexture;
 
         public int Cost
-        {
+		{
             get { return cost; }
         }
         public int Damage
         {
             get { return damage; }
-        }
+		}
 
         public float Radius
         {
@@ -98,7 +98,7 @@ namespace MonoGame2D
                 bullet.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
-        }
+		}
 
-    }
+	}
 }

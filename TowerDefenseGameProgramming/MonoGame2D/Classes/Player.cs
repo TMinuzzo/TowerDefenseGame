@@ -74,7 +74,7 @@ namespace MonoGame2D
             if (mouseState.LeftButton == ButtonState.Released
                 && oldState.LeftButton == ButtonState.Pressed)
             {
-                if (IsCellClear() == true)
+	    if (IsCellClear())
                 {
                     ArrowTower tower = new ArrowTower(towerTexture, bulletTexture, new Vector2(tileX, tileY));
                     if (tower.Cost <= gold)

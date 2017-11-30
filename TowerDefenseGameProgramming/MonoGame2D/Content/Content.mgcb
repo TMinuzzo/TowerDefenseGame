@@ -13,7 +13,14 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../../../Minimalist Ideias/orange_cute_enemy.png
+#begin GameState.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:GameState.spritefont
+
+#begin start-splash.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,7 +30,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../../Minimalist Ideias/orange_cute_enemy.png
+/build:start-splash.png
 
 #begin ../tree1.png
 /importer:TextureImporter
@@ -49,7 +56,7 @@
 /processorParam:TextureFormat=Color
 /build:../tree2.png
 
-#begin black_enemy.png
+#begin blackEnemy.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +66,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:black_enemy.png
+/build:blackEnemy.png
 
 #begin bullet.png
 /importer:TextureImporter
@@ -89,7 +96,9 @@
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /build:GameState.spritefont
 
 #begin grass.png
@@ -140,7 +149,7 @@
 /processorParam:TextureFormat=Color
 /build:orange_cute_enemy.png
 
-#begin orange_onion_enemy.png
+#begin grass.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -150,7 +159,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:orange_onion_enemy.png
+/build:grass.png
 
 #begin path.png
 /importer:TextureImporter
@@ -212,7 +221,7 @@
 /processorParam:TextureFormat=Color
 /build:tree2.png
 
-#begin Walking.png
+#begin tree2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -222,5 +231,28 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Walking.png
+/build:tree2.png
 
+#begin bullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bullet.png
+
+#begin leaf.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:leaf.png
