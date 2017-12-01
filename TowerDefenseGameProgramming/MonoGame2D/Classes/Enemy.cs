@@ -9,7 +9,8 @@ namespace MonoGame2D
 {
     public class Enemy : Sprite
     {
-        private Queue<Vector2> waypoints = new Queue<Vector2>();
+		/* Attributes */
+        public Queue<Vector2> waypoints = new Queue<Vector2>(); // Enemy's path
 
 		public float startHealth = Constants.ENEMY_START_HEALTH;
         protected float speed = Constants.ENEMY_SPEED;
@@ -18,22 +19,78 @@ namespace MonoGame2D
 		public bool outOfScreen = false;
 		public bool alive = true;
 
-        public bool IsAlive()
+		/* Getters */
+		public Queue<Vector2> GetWaypoints()
+		{
+			return waypoints;
+		}
+
+		public float GetStartHealth()
+		{
+			return startHealth;
+		}
+
+		protected float GetSpeed()
+		{
+			return speed;
+		}
+
+		public float GetCurrentHealth()
+		{
+			return currentHealth;
+		}
+		
+		public bool GetAlive()
         {
             return alive;
         }
-        public bool IsOutOfScreen()
+        public bool GetOutOfScreen()
         {
             return outOfScreen;
         }
 
-        public float CurrentHealth
-        {
-            get { return currentHealth; }
-            set { currentHealth = value; }
-        }
+		/* Setters */
+		public void SetWaypoints(Queue<Vector2> waypoints)
+		{
+			foreach (Vector2 waypoint in waypoints)
+				this.waypoints.Enqueue(waypoint);
 
-        public bool IsDead
+			this.position = this.waypoints.Dequeue();
+		}
+
+		public void SetStartHealth(float startHealth)
+		{
+			this.startHealth = startHealth;
+		}
+
+		protected void SetSpeed(float speed)
+		{
+			this.speed = speed;
+		}
+
+		public void SetCurrentHealth(float currentHealth)
+		{
+			this.currentHealth = currentHealth;
+		}
+
+		public void SetAlive(bool alive)
+		{
+			this.alive = alive;
+		}
+		public void SetOutOfScreen(bool outOfScreen)
+		{
+			this.outOfScreen = outOfScreen;
+		}
+
+		/* Constructor */
+		public Enemy(Texture2D texture, Vector2 position)
+			: base(texture, position)
+		{
+			this.currentHealth = startHealth;
+		}
+
+		/* Others */
+		public bool IsDead
         {
             get { return currentHealth <= 0; }
             set { currentHealth  = 0; }
@@ -42,20 +99,6 @@ namespace MonoGame2D
         public float DistanceToDestination
         {
             get { return Vector2.Distance(position, waypoints.Peek()); }
-        }
-
-        public Enemy(Texture2D texture, Vector2 position)
-            : base(texture, position)
-        {
-            this.currentHealth = startHealth;
-        }
-       
-        public void SetWaypoints(Queue<Vector2> waypoints)
-        {
-            foreach (Vector2 waypoint in waypoints)
-                this.waypoints.Enqueue(waypoint);
-
-            this.position = this.waypoints.Dequeue();
         }
 
         public override void Update(GameTime gameTime)

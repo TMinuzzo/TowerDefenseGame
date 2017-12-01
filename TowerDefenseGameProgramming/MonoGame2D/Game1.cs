@@ -13,7 +13,7 @@ namespace MonoGame2D
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Random random = new Random();
-        Map level = new Map();
+        Map map = new Map();
 
         List<Enemy> enemies = new List<Enemy>();
 
@@ -35,8 +35,8 @@ namespace MonoGame2D
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             startConfigScreen();
-            graphics.PreferredBackBufferWidth = level.Width * Constants.MAP_TILE_SIZE;
-            graphics.PreferredBackBufferHeight = 256 + level.Height * Constants.MAP_TILE_SIZE;
+            graphics.PreferredBackBufferWidth = map.Width * Constants.MAP_TILE_SIZE;
+            graphics.PreferredBackBufferHeight = 256 + map.Height * Constants.MAP_TILE_SIZE;
             //graphics.ApplyChanges();
         }
 
@@ -54,7 +54,7 @@ namespace MonoGame2D
             Texture2D topBar = Content.Load<Texture2D>("menu");
             SpriteFont font = Content.Load<SpriteFont>("GameState");       
 
-            toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * Constants.MAP_TILE_SIZE));
+            toolBar = new Toolbar(topBar, font, new Vector2(0, map.Height * Constants.MAP_TILE_SIZE));
 
             startGameSplash = Content.Load<Texture2D>("start-splash");
             gameOverSplash = Content.Load<Texture2D>("GameOver");
@@ -68,15 +68,15 @@ namespace MonoGame2D
             enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
             enemyTextures.Add(Content.Load<Texture2D>("enemyOnion"));
 
-            level.AddTexture(grass);
-            level.AddTexture(path);
-            level.AddTexture(tree1);
-            level.AddTexture(tree2);
+            map.AddTexture(grass);
+			map.AddTexture(path);
+			map.AddTexture(tree1);
+			map.AddTexture(tree2);
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower");
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
 
-            player = new Player(level, towerTexture, bulletTexture);
+            player = new Player(map, towerTexture, bulletTexture);
            
 		}
 
@@ -106,7 +106,7 @@ namespace MonoGame2D
 
             spriteBatch.Begin();
 
-            level.Draw(spriteBatch);
+            map.Draw(spriteBatch);
 
             DrawEnemies();
 
@@ -118,9 +118,7 @@ namespace MonoGame2D
             {
                 spriteBatch.Draw(startGameSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
-            else
-            {
-            }
+
             if (gameOver)
             {
                 spriteBatch.Draw(gameOverSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
@@ -165,27 +163,26 @@ namespace MonoGame2D
                 if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
                 {
                     Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
-                    enemy.SetWaypoints(level.Waypoints);
+                    enemy.SetWaypoints(map.GetWaypoints());
 
                     enemies.Add(enemy);
                 }
             }
         
-
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (enemies[i].IsOutOfScreen())
+                if (enemies[i].GetOutOfScreen()) // Removes enemies out of screen
                 {
                     enemies.RemoveAt(i);
                     i--;
 
-					player.setLives(player.getLives() - 1);
+					player.SetLives(player.GetLives() - 1); // If a enemie arrived at the end of the screen, player loses a life
 
-                    if (player.getLives() == 0)
+                    if (player.GetLives() == 0)
                     {
                         gameOver = true;
                     }
-                } else if (!enemies[i].IsAlive())
+                } else if (!enemies[i].GetAlive()) // Removes dead enemies
 				{
 					enemies.RemoveAt(i);
 					i--;
@@ -193,10 +190,7 @@ namespace MonoGame2D
             }
 
         }
-        protected void DrawLives()
-        {
 
-        }
         protected void UpdateEnemies(GameTime gameTime)
         {
             foreach (Enemy enemy in enemies)
@@ -228,8 +222,8 @@ namespace MonoGame2D
         {
             gameStarted = true;
             gameOver = false;
-            player.setLives(Constants.PLAYER_START_LIFES);
-            player.setGold(Constants.PLAYER_START_GOLD);
+            player.SetLives(Constants.PLAYER_START_LIFES);
+            player.SetGold(Constants.PLAYER_START_GOLD);
             enemies.Clear();
 			player.ClearTowers();
         }

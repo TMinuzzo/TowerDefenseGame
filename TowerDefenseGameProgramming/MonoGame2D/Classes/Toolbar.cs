@@ -19,7 +19,6 @@ namespace MonoGame2D
         private Vector2 textPositionLives;
         private Vector2 textPositionGold;
 
-
         public Toolbar(Texture2D texture, SpriteFont font, Vector2 position)
         {
             this.texture = texture;
@@ -35,8 +34,8 @@ namespace MonoGame2D
         {
             spriteBatch.Draw(texture, position, Color.White);
            
-            string textLives = string.Format(">>> {0} <<<", player.Lives);
-            string textGold = string.Format(" {0} ", player.Gold);
+            string textLives = string.Format(">>> {0} <<<", player.GetLives());
+            string textGold = string.Format(" {0} ", player.GetLives());
             spriteBatch.DrawString(font, textLives, textPositionLives, Color.SaddleBrown);
             spriteBatch.DrawString(font, textGold, textPositionGold, Color.SaddleBrown);
         }

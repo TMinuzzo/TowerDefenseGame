@@ -9,27 +9,41 @@ namespace MonoGame2D
 {
     public class Sprite
     {
+		/* Attributes */
         protected Texture2D texture;
 
-        protected Vector2 position;
+		public Vector2 position;
         protected Vector2 velocity;
 
-        protected Vector2 center;
+		public Vector2 center;
         protected Vector2 origin;
 
         protected float rotation;
 
-        public Vector2 Center
+		/* Getters */
+        public Vector2 GetCenter()
         {
-            get { return center; }
+			return center;
         }
 
-        public Vector2 Position
+        public Vector2 GetPosition()
         {
-            get { return position; }
+            return position;
         }
 
-        public Sprite(Texture2D tex, Vector2 pos)
+		/* Setters */
+		public void SetCenter(Vector2 center)
+		{
+			this.center = center;
+		}
+
+		public void SetPosition(Vector2 position)
+		{
+			this.position = position;
+		}
+
+		/* Constructor */
+		public Sprite(Texture2D tex, Vector2 pos)
         {
             texture = tex;
 

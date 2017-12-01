@@ -10,30 +10,58 @@ namespace MonoGame2D
 {
     public class Bullet : Sprite
     {
-        private int damage;
-        private int age;
+		/* Attributes */
+        public int damage;
+        public int age;
+        public int speed;
 
-        private int speed;
+		/* Getters */
+		public int GetDamage()
+		{
+			return damage;
+		}
 
-        public int Damage
-        {
-            get { return damage; }
-        }
+		public int GetAge()
+		{
+			return age;
+		}
 
-        public bool IsDead()
+		public int GetSpeed()
+		{
+			return speed;
+		}
+
+		/* Setters */
+		public void SetDamage(int damage)
+		{
+			this.damage = damage;
+		}
+
+		public void SetAge(int age)
+		{
+			this.age = age;
+		}
+
+		public void SetSpeed(int speed)
+		{
+			this.speed = speed;
+		}
+
+		public bool IsDead()
         {
             return age > 100;
         }
 
+		/* Constructor */
         public Bullet(Texture2D texture, Vector2 position, float rotation,
             int speed, int damage) : base(texture, position)
         {
             this.rotation = rotation;
             this.damage = damage;
-
             this.speed = speed;
         }
 
+		/* Others */
         public void Kill()
         {
             this.age = 200;

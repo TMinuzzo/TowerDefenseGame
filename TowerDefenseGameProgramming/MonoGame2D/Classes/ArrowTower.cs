@@ -10,13 +10,16 @@ namespace MonoGame2D
 {
 	public class ArrowTower : Tower
 	{
+		/* Constructor */
         public ArrowTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.damage = Constants.ARROW_TOWER_DAMAGE; // Set the damage
-            this.radius = Constants.ARROW_TOWER_RADIUS; // Set the radius
+            this.damage = Constants.ARROW_TOWER_DAMAGE;
+            this.radius = Constants.ARROW_TOWER_RADIUS;
+			this.bulletSpeed = Constants.ARROW_TOWER_BULLET_SPEED;
         }
 
+		/* Others */
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -24,7 +27,7 @@ namespace MonoGame2D
             if (bulletTimer >= 0.75f && target != null)
             {
                 Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(center,
-                    new Vector2(bulletTexture.Width / 2)), rotation, 4, damage);
+                    new Vector2(bulletTexture.Width / 2)), rotation, bulletSpeed, damage);
 
                 bulletList.Add(bullet);
                 bulletTimer = 0;
@@ -37,12 +40,13 @@ namespace MonoGame2D
                 bullet.SetRotation(rotation);
                 bullet.Update(gameTime);
 
-                if (!IsInRange(bullet.Center))
+                if (!IsInRange(bullet.GetCenter()))
                     bullet.Kill();
 
-                if (target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
+                if (target != null && Vector2.Distance(bullet.GetCenter(), target.GetCenter()) < 12)
                 {
-                    target.CurrentHealth -= bullet.Damage;
+					float newCurrentHealth = target.GetCurrentHealth() - bullet.GetDamage();
+					target.SetCurrentHealth(newCurrentHealth);
                     bullet.Kill();
                 }
 

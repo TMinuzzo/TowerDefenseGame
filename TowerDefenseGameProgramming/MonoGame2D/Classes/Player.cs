@@ -11,8 +11,9 @@ namespace MonoGame2D
 {
     public class Player
     {
-        private int gold = Constants.PLAYER_START_GOLD;
-        private int lives = Constants.PLAYER_START_LIFES;
+		/* Attributes */
+        public int gold = Constants.PLAYER_START_GOLD;
+		public int lives = Constants.PLAYER_START_LIFES;
 
         private List<Tower> towers = new List<Tower>();
 
@@ -23,30 +24,35 @@ namespace MonoGame2D
 
         private Texture2D bulletTexture;
 
-        public int Gold
+		private Map map;
+
+		private int cellX;
+		private int cellY;
+
+		private int tileX;
+		private int tileY;
+
+		/* Getters */
+		public int GetGold()
         {
-            get { return gold; }
+            return gold;
         }
-        public int Lives
-        {
-            get { return lives; }
-  
-        }
-        public void setLives(int livesReceived)
-        {
-            lives = livesReceived;
-        }
-        public void setGold(int goldReceived)
-        {
-            gold = goldReceived;
-        }
-        public int getLives()
+        public int GetLives()
         {
             return lives;
         }
 
-        private Map map;
+		/* Setters */
+        public void SetLives(int lives)
+        {
+            this.lives = lives;
+        }
+        public void SetGold(int gold)
+        {
+            this.gold = gold;
+        }
 
+		/* Constructor */
         public Player(Map map, Texture2D towerTexture, Texture2D bulletTexture)
         {
             this.map = map;
@@ -55,12 +61,7 @@ namespace MonoGame2D
             this.bulletTexture = bulletTexture;
         }
 
-        private int cellX;
-        private int cellY;
-
-        private int tileX;
-        private int tileY;
-
+		/* Others */
         public void Update(GameTime gameTime, List<Enemy> enemies)
         {
             mouseState = Mouse.GetState();
@@ -77,10 +78,10 @@ namespace MonoGame2D
 				if (IsCellClear())
 				{
 					ArrowTower tower = new ArrowTower(towerTexture, bulletTexture, new Vector2(tileX, tileY));
-					if (tower.Cost <= gold)
+					if (tower.GetCost() <= gold)
 					{
 						towers.Add(tower);
-						gold -= tower.Cost;
+						gold -= tower.GetCost();
 					}
 				}
 			}
@@ -103,7 +104,7 @@ namespace MonoGame2D
 
             foreach (Tower tower in towers) // Check that there is no tower here
             {
-                spaceClear = (tower.Position != new Vector2(tileX, tileY));
+                spaceClear = (tower.GetPosition() != new Vector2(tileX, tileY));
 
                 if (!spaceClear)
                     break;
