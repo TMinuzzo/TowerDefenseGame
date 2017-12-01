@@ -10,6 +10,7 @@ namespace MonoGame2D
 	{
 		/* ABOUT THE GAME */
 		static public int MAX_ENEMIES = 3;
+		static public int ENEMY_SPAWN_TIME = 4;
 
 		/* ABOUT THE ENEMIES */
 		static public int ENEMY_START_HEALTH = 100;
@@ -26,5 +27,6 @@ namespace MonoGame2D
 		static public int ARROW_TOWER_DAMAGE = 25;
 		static public int ARROW_TOWER_RADIUS = 150;
 		static public int ARROW_TOWER_BULLET_SPEED = 4;
+		static public int ARROW_TOWER_COST = 15;
 	}
 }

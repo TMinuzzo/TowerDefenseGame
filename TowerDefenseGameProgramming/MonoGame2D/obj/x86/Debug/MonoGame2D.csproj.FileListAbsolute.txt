@@ -1735,3 +1735,4 @@ C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\Mo
 C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\SharpDX.Direct3D11.xml
 C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\SharpDX.MediaFoundation.xml
 C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\SharpDX.Direct2D1.xml
+C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\obj\x86\Debug\MonoGame2D.csprojResolveAssemblyReference.cache

@@ -157,8 +157,8 @@ namespace MonoGame2D
 
         protected void LoadEnemies()
         {
-            if (spawn >= 3) // Respawns an enemy every second
-            {
+            if (spawn >= Constants.ENEMY_SPAWN_TIME) // Respawns an enemy each ENEMY_SPAWN_TIME
+			{
                 spawn = 0;
                 if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
                 {

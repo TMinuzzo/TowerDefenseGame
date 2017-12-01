@@ -16,6 +16,7 @@ namespace MonoGame2D
         {
             this.damage = Constants.ARROW_TOWER_DAMAGE;
             this.radius = Constants.ARROW_TOWER_RADIUS;
+			this.cost = Constants.ARROW_TOWER_COST;
 			this.bulletSpeed = Constants.ARROW_TOWER_BULLET_SPEED;
         }
 
