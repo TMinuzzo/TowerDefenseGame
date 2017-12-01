@@ -26,8 +26,12 @@ namespace MonoGame2D
 		/* ABOUT THE ARROW TOWER TOWER */
 		static public int ARROW_TOWER_DAMAGE = 10;
 		static public int ARROW_TOWER_RADIUS = 150;
+<<<<<<< HEAD
         static public int ARROW_TOWER_COST = 15;
         static public int ARROW_TOWER_BULLET_SPEED = 4;
+=======
+		static public int ARROW_TOWER_BULLET_SPEED = 4;
 		static public int ARROW_TOWER_COST = 15;
+>>>>>>> 96acd6edd09ec9b7d83a790c785b788ed4dba3c6
 	}
 }
