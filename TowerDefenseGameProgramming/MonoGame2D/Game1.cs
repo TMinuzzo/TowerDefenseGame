@@ -21,6 +21,7 @@ namespace MonoGame2D
 
         Player player;
         Toolbar toolBar;
+        Button button;
 
         float screenWidth;
         float screenHeight;
@@ -29,8 +30,9 @@ namespace MonoGame2D
 
         Texture2D startGameSplash;
         Texture2D gameOverSplash;
+        Texture2D towerTexture;
 
-		public Game1()
+        public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -52,8 +54,8 @@ namespace MonoGame2D
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Texture2D topBar = Content.Load<Texture2D>("menu");
-            SpriteFont font = Content.Load<SpriteFont>("GameState");       
-
+            SpriteFont font = Content.Load<SpriteFont>("GameState");
+            button = new Button(); //construtor alternativo de button 
             toolBar = new Toolbar(topBar, font, new Vector2(0, map.Height * Constants.MAP_TILE_SIZE));
 
             startGameSplash = Content.Load<Texture2D>("start-splash");
@@ -73,16 +75,18 @@ namespace MonoGame2D
 			map.AddTexture(tree1);
 			map.AddTexture(tree2);
 
-            Texture2D towerTexture = Content.Load<Texture2D>("tower");
+            towerTexture = Content.Load<Texture2D>("tower");
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
 
             player = new Player(map, towerTexture, bulletTexture);
-           
-		}
+            button.OnPress += new EventHandler(tower_OnPress);
+            button.Clicked += new EventHandler(tower_OnClicked);
+
+        }
 
         protected override void UnloadContent()
         {
-
+            Content.Unload();
         }
 
         float spawn = 0;
@@ -123,6 +127,7 @@ namespace MonoGame2D
             {
                 spriteBatch.Draw(gameOverSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
+            player.DrawPreview(spriteBatch, towerTexture);
 
             spriteBatch.End();
 
@@ -227,5 +232,15 @@ namespace MonoGame2D
             enemies.Clear();
 			player.ClearTowers();
         }
+
+       protected void  tower_OnPress(object sender, EventArgs e)
+       {
+
+       }
+        protected void tower_OnClicked(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

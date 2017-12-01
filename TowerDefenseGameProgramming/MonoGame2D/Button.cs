@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Windows.Graphics.Display;
 
-namespace Monogame2D
+namespace MonoGame2D
 {
     public enum ButtonStatus
     {
@@ -59,7 +59,10 @@ namespace Monogame2D
             get;
             set;
         }
-
+        public Button()
+        {
+            
+        }
         /// <summary>
         /// Constructs a new button.
         /// </summary>
@@ -127,11 +130,8 @@ namespace Monogame2D
                     // update the button state.
                     state = ButtonStatus.MouseOver;
 
-                    if (Clicked != null)
-                    {
-                        // Fire the clicked event.
-                        Clicked(this, EventArgs.Empty);
-                    }
+                    // Fire the clicked event.
+                    Clicked?.Invoke(this, EventArgs.Empty);
                 }
 
                 else if (state == ButtonStatus.Pressed)

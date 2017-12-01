@@ -32,8 +32,10 @@ namespace MonoGame2D
 		private int tileX;
 		private int tileY;
 
-		/* Getters */
-		public int GetGold()
+        private int newTowerIndex;
+
+        /* Getters */
+        public int GetGold()
         {
             return gold;
         }
@@ -128,5 +130,19 @@ namespace MonoGame2D
 		{
 			towers.Clear();
 		}
-	}
+
+        public void DrawPreview(SpriteBatch spriteBatch, Texture2D towerTexture)
+        {
+            // Draw the tower preview.
+                int cellX = (int)(mouseState.X / 32); // Convert the position of the mouse
+                int cellY = (int)(mouseState.Y / 32); // from array space to level space
+
+                int tileX = cellX * 32; // Convert from array space to level space
+                int tileY = cellY * 32; // Convert from array space to level space
+
+            Texture2D previewTexture = towerTexture;
+            spriteBatch.Draw(previewTexture, new Rectangle(tileX, tileY,
+                previewTexture.Width, previewTexture.Height), Color.White);
+        }
+    }
 }

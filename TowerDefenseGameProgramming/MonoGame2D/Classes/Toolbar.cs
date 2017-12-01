@@ -35,7 +35,7 @@ namespace MonoGame2D
             spriteBatch.Draw(texture, position, Color.White);
            
             string textLives = string.Format(">>> {0} <<<", player.GetLives());
-            string textGold = string.Format(" {0} ", player.GetLives());
+            string textGold = string.Format(" {0} ", player.GetGold());
             spriteBatch.DrawString(font, textLives, textPositionLives, Color.SaddleBrown);
             spriteBatch.DrawString(font, textGold, textPositionGold, Color.SaddleBrown);
         }
