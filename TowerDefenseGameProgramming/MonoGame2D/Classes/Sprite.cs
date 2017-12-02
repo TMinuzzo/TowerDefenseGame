@@ -12,10 +12,10 @@ namespace MonoGame2D
 		/* Attributes */
         protected Texture2D texture;
 
-		public Vector2 position;
+		private Vector2 position;
         protected Vector2 velocity;
 
-		public Vector2 center;
+		private Vector2 center;
         protected Vector2 origin;
 
         protected float rotation;

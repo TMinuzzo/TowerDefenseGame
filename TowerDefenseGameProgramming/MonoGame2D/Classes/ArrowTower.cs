@@ -28,7 +28,7 @@ namespace MonoGame2D
 
             if (bulletTimer >= 0.75f && target != null)
             {
-                Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(center,
+                Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(GetCenter(),
                     new Vector2(bulletTexture.Width / 2)), rotation, bulletSpeed, damage);
 
                 bulletList.Add(bullet);

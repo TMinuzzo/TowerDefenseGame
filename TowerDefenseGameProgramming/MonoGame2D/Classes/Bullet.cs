@@ -11,9 +11,9 @@ namespace MonoGame2D
     public class Bullet : Sprite
     {
 		/* Attributes */
-        public int damage;
-        public int age;
-        public int speed;
+        protected int damage;
+        protected int age;
+        protected int speed;
 
 		/* Getters */
 		public int GetDamage()
@@ -70,7 +70,9 @@ namespace MonoGame2D
         public override void Update(GameTime gameTime)
         {
             age++;
+            Vector2 position = GetPosition();
             position += velocity;
+            SetPosition(position);
 
             base.Update(gameTime);
         }

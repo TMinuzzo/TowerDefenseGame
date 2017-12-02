@@ -55,7 +55,9 @@ namespace MonoGame2D
 			foreach (Vector2 waypoint in waypoints)
 				this.waypoints.Enqueue(waypoint);
 
-			this.position = this.waypoints.Dequeue();
+            Vector2 position = GetPosition();
+            position = this.waypoints.Dequeue();
+            SetPosition(position);
 		}
 
 		public void SetStartHealth(float startHealth)
@@ -98,19 +100,21 @@ namespace MonoGame2D
 
         public float DistanceToDestination
         {
-            get { return Vector2.Distance(position, waypoints.Peek()); }
+            get { return Vector2.Distance(GetPosition(), waypoints.Peek()); }
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-			if (waypoints.Count > 0)
+            Vector2 position = GetPosition();
+            if (waypoints.Count > 0)
 			{
 				if (DistanceToDestination < 1f)
 				{
 					position = waypoints.Peek();
 					waypoints.Dequeue();
+                    SetPosition(position);
 				}
 
 				else
@@ -121,6 +125,7 @@ namespace MonoGame2D
 					velocity = Vector2.Multiply(direction, speed);
 
 					position += velocity;
+                    SetPosition(position);
 				}
 			}
 			else

@@ -12,8 +12,8 @@ namespace MonoGame2D
     public class Player
     {
 		/* Attributes */
-        public int gold = Constants.PLAYER_START_GOLD;
-		public int lives = Constants.PLAYER_START_LIFES;
+        protected int gold = Constants.PLAYER_START_GOLD;
+        protected int lives = Constants.PLAYER_START_LIFES;
 
         private List<Tower> towers = new List<Tower>();
 
@@ -31,8 +31,6 @@ namespace MonoGame2D
 
 		private int tileX;
 		private int tileY;
-
-        private int newTowerIndex;
 
         /* Getters */
         public int GetGold()

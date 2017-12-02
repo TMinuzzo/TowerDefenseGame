@@ -23,7 +23,6 @@ namespace MonoGame2D
         // The the different state textures.
         private Texture2D hoverTexture;
         private Texture2D pressedTexture;
-        int lives = 3;
 
         // A rectangle that covers the button.
         private Rectangle bounds;

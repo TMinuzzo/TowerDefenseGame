@@ -15,9 +15,9 @@ namespace MonoGame2D
 		protected List<Bullet> bulletList = new List<Bullet>();
         protected Enemy target;
 
-        public int cost; // How much will the tower cost to make
-		public int damage; // The damage done to enemy's
-		public float radius; // How far the tower can shoot
+        protected int cost; // How much will the tower cost to make
+        protected int damage; // The damage done to enemy's
+        protected float radius; // How far the tower can shoot
 		protected int bulletSpeed;
 
 		protected Texture2D bulletTexture;
@@ -64,7 +64,7 @@ namespace MonoGame2D
 		/* Others */
         public bool IsInRange(Vector2 position)
         {
-            return Vector2.Distance(center, position) <= radius;
+            return Vector2.Distance(GetCenter(), position) <= radius;
         }
 
         public void GetClosestEnemy(List<Enemy> enemies)
@@ -77,9 +77,9 @@ namespace MonoGame2D
 				bool outOfScreen = enemy.GetOutOfScreen();
 				bool alive = enemy.GetAlive();
 
-				if (Vector2.Distance(center, enemy.GetCenter()) < smallestRange && !outOfScreen && alive)
+				if (Vector2.Distance(GetCenter(), enemy.GetCenter()) < smallestRange && !outOfScreen && alive)
                 {
-                    smallestRange = Vector2.Distance(center, enemy.GetCenter());
+                    smallestRange = Vector2.Distance(GetCenter(), enemy.GetCenter());
                     target = enemy;
                 }
             }
@@ -87,7 +87,7 @@ namespace MonoGame2D
 
         protected void FaceTarget()
         {
-            Vector2 direction = center - target.GetCenter();
+            Vector2 direction = GetCenter() - target.GetCenter();
             direction.Normalize();
 
             rotation = (float)Math.Atan2(-direction.X, direction.Y);
