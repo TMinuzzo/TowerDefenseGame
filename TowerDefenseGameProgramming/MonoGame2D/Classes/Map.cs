@@ -4,6 +4,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Immutable;
 
 namespace MonoGame2D
 {
@@ -24,7 +25,7 @@ namespace MonoGame2D
 
 		/* Attributes */
         public Queue<Vector2> waypoints = new Queue<Vector2>();
-		private List<Texture2D> tileTextures = new List<Texture2D>();
+		private ImmutableList<Texture2D> tileTextures = ImmutableList.Create<Texture2D>();
 
 		/* Getters */
 		public Queue<Vector2> GetWaypoints()
@@ -32,7 +33,7 @@ namespace MonoGame2D
             return waypoints;
         }
 
-		private List<Texture2D> GetTileTextures()
+		private ImmutableList<Texture2D> GetTileTextures()
 		{
 			return tileTextures;
 		}
@@ -43,7 +44,7 @@ namespace MonoGame2D
 			this.waypoints = waypoints;
 		}
 
-		private void SetTileTextures(List<Texture2D> tileTextures)
+		private void SetTileTextures(ImmutableList<Texture2D> tileTextures)
 		{
 			this.tileTextures = tileTextures;
 		}
@@ -95,7 +96,7 @@ namespace MonoGame2D
 
          public void AddTexture(Texture2D texture)
         {
-            tileTextures.Add(texture);
+			tileTextures = tileTextures.Add(texture);
         }
 
         public void Draw(SpriteBatch batch)

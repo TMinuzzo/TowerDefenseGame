@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Windows.Graphics.Display;
 using Windows.UI.ViewManagement;
 
@@ -15,9 +16,9 @@ namespace MonoGame2D
         Random random = new Random();
         Map map = new Map();
 
-        List<Enemy> enemies = new List<Enemy>();
+		ImmutableList<Enemy> enemies = ImmutableList.Create<Enemy>();
 
-        List<Texture2D> enemyTextures = new List<Texture2D>();
+		ImmutableList<Texture2D> enemyTextures = ImmutableList.Create<Texture2D>();
 
         Player player;
         Toolbar toolBar;
@@ -65,10 +66,10 @@ namespace MonoGame2D
             Texture2D path = Content.Load<Texture2D>("path");
             Texture2D tree1 = Content.Load<Texture2D>("tree1");
             Texture2D tree2 = Content.Load<Texture2D>("tree2");
-            
-            enemyTextures.Add(Content.Load<Texture2D>("blackEnemy"));
-            enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
-            enemyTextures.Add(Content.Load<Texture2D>("enemyOnion"));
+
+			enemyTextures = enemyTextures.Add(Content.Load<Texture2D>("blackEnemy"));
+			enemyTextures = enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
+			enemyTextures = enemyTextures.Add(Content.Load<Texture2D>("enemyOnion"));
 
             map.AddTexture(grass);
 			map.AddTexture(path);
@@ -170,7 +171,7 @@ namespace MonoGame2D
                     Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
                     enemy.SetWaypoints(map.GetWaypoints());
 
-                    enemies.Add(enemy);
+					enemies = enemies.Add(enemy);
                 }
             }
         
@@ -178,7 +179,7 @@ namespace MonoGame2D
             {
                 if (enemies[i].GetOutOfScreen()) // Removes enemies out of screen
                 {
-                    enemies.RemoveAt(i);
+					enemies = enemies.RemoveAt(i);
                     i--;
 
 					player.SetLives(player.GetLives() - 1); // If a enemie arrived at the end of the screen, player loses a life
@@ -189,7 +190,7 @@ namespace MonoGame2D
                     }
                 } else if (!enemies[i].GetAlive()) // Removes dead enemies
 				{
-					enemies.RemoveAt(i);
+					enemies = enemies.RemoveAt(i);
 					i--;
 				}
             }

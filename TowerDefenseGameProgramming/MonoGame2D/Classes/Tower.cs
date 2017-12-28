@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace MonoGame2D
 	{
 		/* Attributes */
         protected float bulletTimer; // How long ago was a bullet fire
-		protected List<Bullet> bulletList = new List<Bullet>();
+		protected ImmutableList<Bullet> bulletList = ImmutableList.Create<Bullet>();
         protected Enemy target;
 
         protected int cost; // How much will the tower cost to make
@@ -67,7 +68,7 @@ namespace MonoGame2D
             return Vector2.Distance(GetCenter(), position) <= radius;
         }
 
-        public void GetClosestEnemy(List<Enemy> enemies)
+        public void GetClosestEnemy(ImmutableList<Enemy> enemies)
         {
             target = null;
             float smallestRange = radius;

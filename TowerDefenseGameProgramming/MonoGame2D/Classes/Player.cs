@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace MonoGame2D
         protected int gold = Constants.PLAYER_START_GOLD;
         protected int lives = Constants.PLAYER_START_LIFES;
 
-        private List<Tower> towers = new List<Tower>();
+        private ImmutableList<Tower> towers = ImmutableList.Create<Tower>();
 
         private Texture2D towerTexture;
 
@@ -62,7 +63,7 @@ namespace MonoGame2D
         }
 
 		/* Others */
-        public void Update(GameTime gameTime, List<Enemy> enemies)
+        public void Update(GameTime gameTime, ImmutableList<Enemy> enemies)
         {
             mouseState = Mouse.GetState();
 
@@ -80,7 +81,7 @@ namespace MonoGame2D
 					ArrowTower tower = new ArrowTower(towerTexture, bulletTexture, new Vector2(tileX, tileY));
 					if (tower.GetCost() <= gold)
 					{
-						towers.Add(tower);
+						towers = towers.Add(tower);
 						gold -= tower.GetCost();
 					}
 				}

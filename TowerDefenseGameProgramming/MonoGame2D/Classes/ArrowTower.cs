@@ -31,7 +31,7 @@ namespace MonoGame2D
                 Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(GetCenter(),
                     new Vector2(bulletTexture.Width / 2)), rotation, bulletSpeed, damage);
 
-                bulletList.Add(bullet);
+				bulletList = bulletList.Add(bullet);
                 bulletTimer = 0;
             }
 
@@ -54,7 +54,7 @@ namespace MonoGame2D
 
                 if (bullet.IsDead())
                 {
-                    bulletList.Remove(bullet);
+					bulletList = bulletList.Remove(bullet);
                     i--;                  
                     }
                 }
