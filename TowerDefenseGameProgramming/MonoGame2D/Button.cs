@@ -62,13 +62,7 @@ namespace MonoGame2D
         {
             
         }
-        /// <summary>
-        /// Constructs a new button.
-        /// </summary>
-        /// <param name="texture">The normal texture for the button.</param>
-        /// <param name="hoverTexture">The texture drawn when the mouse is over the button.</param>
-        /// <param name="pressedTexture">The texture drawn when the button has been pressed.</param>
-        /// <param name="position">The position where the button will be drawn.</param>
+        
         public Button(Vector2 position, GraphicsDevice graphicsDevice, string textureName, float scale)
         {
             this.scale = scale;

@@ -121,7 +121,6 @@ namespace MonoGame2D
         {
             if (cellX < 0 || cellX > Width - 1 || cellY < 0 || cellY > Height - 1)
                 return 0;
-
             return mapMatrix[cellY, cellX];
         }
 

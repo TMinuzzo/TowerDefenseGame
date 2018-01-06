@@ -14,8 +14,9 @@ namespace MonoGame2D
 
 		public float startHealth = Constants.ENEMY_START_HEALTH;
         protected float speed = Constants.ENEMY_SPEED;
+        internal delegate void Function();
 
-		public float currentHealth;
+        public float currentHealth;
 		public bool outOfScreen = false;
 		public bool alive = true;
 
@@ -150,5 +151,11 @@ namespace MonoGame2D
                 base.Draw(spriteBatch, Color.White);
             }      
         }
-	}
+
+        public static Enemy setPath(Enemy functionValue, Map map)
+        {
+            functionValue.SetWaypoints(map.GetWaypoints());
+            return functionValue;
+        }
+    }
 }

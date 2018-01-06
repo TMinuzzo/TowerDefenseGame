@@ -3,35 +3,26 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Windows.Graphics.Display;
 using Windows.UI.ViewManagement;
 
 namespace MonoGame2D
 {
-<<<<<<< HEAD
-    public class Contants
-    {
-        public static int MAX_ENEMIES = 3;
-        public static int MAX_LIVES = 4;
-        public static int MAX_GOLD = 50;
-
-    }
-
-    public class Game1 : Game
+	public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
         Random random = new Random();
+        Map map = new Map();
 
-        Map level = new Map();
+		ImmutableList<Enemy> enemies = ImmutableList.Create<Enemy>();
 
-        List<Enemy> enemies = new List<Enemy>();
-
-        List<Texture2D> enemyTextures = new List<Texture2D>();
+		ImmutableList<Texture2D> enemyTextures = ImmutableList.Create<Texture2D>();
 
         Player player;
         Toolbar toolBar;
+        Button button;
 
         float screenWidth;
         float screenHeight;
@@ -40,67 +31,34 @@ namespace MonoGame2D
 
         Texture2D startGameSplash;
         Texture2D gameOverSplash;
+        Texture2D towerTexture;
+        SpriteFont font;
 
-=======
-	public class Contants
-	{
-		public static int MAX_ENEMIES = 3;
-	}
-
-	public class Game1 : Game
-    {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
-		Random random = new Random();
-
-		Map level = new Map();
-
-        List<Enemy> enemies = new List<Enemy>();
-
-		List<Texture2D> enemyTextures = new List<Texture2D>();
-
-		Player player;
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
-
-		public Game1()
+        public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-<<<<<<< HEAD
             startConfigScreen();
-            graphics.PreferredBackBufferWidth = level.Width * 64;
-            graphics.PreferredBackBufferHeight = 256 + level.Height * 64;
+            graphics.PreferredBackBufferWidth = map.Width * Constants.MAP_TILE_SIZE;
+            graphics.PreferredBackBufferHeight = 256 + map.Height * Constants.MAP_TILE_SIZE;
             //graphics.ApplyChanges();
-=======
-
-            graphics.PreferredBackBufferWidth = level.Width * 64;
-            graphics.PreferredBackBufferHeight = level.Height * 64;
-            graphics.ApplyChanges();
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
         }
 
         protected override void Initialize()
         {
-<<<<<<< HEAD
             this.IsMouseVisible = true;
             startConfigScreen();
-            base.Initialize();
-=======
-			this.IsMouseVisible = true;
 			base.Initialize();
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-<<<<<<< HEAD
             Texture2D topBar = Content.Load<Texture2D>("menu");
-            SpriteFont font = Content.Load<SpriteFont>("GameState");       
-
-            toolBar = new Toolbar(topBar, font, new Vector2(0, level.Height * 64));
+            font = Content.Load<SpriteFont>("GameState");
+            button = new Button(); //construtor alternativo de button 
+            toolBar = new Toolbar(topBar, font, new Vector2(0, map.Height * Constants.MAP_TILE_SIZE));
 
             startGameSplash = Content.Load<Texture2D>("start-splash");
             gameOverSplash = Content.Load<Texture2D>("GameOver");
@@ -109,27 +67,30 @@ namespace MonoGame2D
             Texture2D path = Content.Load<Texture2D>("path");
             Texture2D tree1 = Content.Load<Texture2D>("tree1");
             Texture2D tree2 = Content.Load<Texture2D>("tree2");
-            
-            enemyTextures.Add(Content.Load<Texture2D>("black_enemy"));
-            enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
-            enemyTextures.Add(Content.Load<Texture2D>("orange_onion_enemy"));
 
-            level.AddTexture(grass);
-            level.AddTexture(path);
-            level.AddTexture(tree1);
-            level.AddTexture(tree2);
+			enemyTextures = enemyTextures.Add(Content.Load<Texture2D>("blackEnemy"));
+			enemyTextures = enemyTextures.Add(Content.Load<Texture2D>("orange_cute_enemy"));
+			enemyTextures = enemyTextures.Add(Content.Load<Texture2D>("enemyOnion"));
 
-            Texture2D towerTexture = Content.Load<Texture2D>("tower");
+            map.AddTexture(grass);
+			map.AddTexture(path);
+			map.AddTexture(tree1);
+			map.AddTexture(tree2);
+
+            towerTexture = Content.Load<Texture2D>("tower");
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
 
-            player = new Player(level, towerTexture, bulletTexture);
-           
+            player = new Player(map, towerTexture, bulletTexture);
+            button.OnPress += new EventHandler(tower_OnPress);
+            button.Clicked += new EventHandler(tower_OnClicked);
+
         }
 
         protected override void UnloadContent()
         {
-
+            Content.Unload();
         }
+
 
         float spawn = 0;
         protected override void Update(GameTime gameTime)
@@ -143,82 +104,38 @@ namespace MonoGame2D
 
             player.Update(gameTime, enemies);
 
-            base.Update(gameTime);
-=======
-            Texture2D grass = Content.Load<Texture2D>("grass"); 
-            Texture2D path = Content.Load<Texture2D>("path");
-			Texture2D tree1 = Content.Load<Texture2D>("tree1");
-			Texture2D tree2 = Content.Load<Texture2D>("tree2");
-
-			enemyTextures.Add(Content.Load<Texture2D>("blackEnemy"));
-			enemyTextures.Add(Content.Load<Texture2D>("enemyCute"));
-			enemyTextures.Add(Content.Load<Texture2D>("enemyOnion"));
-
-			level.AddTexture(grass); 
-            level.AddTexture(path);
-			level.AddTexture(tree1);
-			level.AddTexture(tree2);
-
-			Texture2D towerTexture = Content.Load<Texture2D>("tower");
-			Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
-
-			player = new Player(level, towerTexture, bulletTexture);
-
-		}
-
-        protected override void UnloadContent()
-        {
-            
-        }
-
-		float spawn = 0;
-        protected override void Update(GameTime gameTime)
-        {
-			spawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-			UpdateEnemies(gameTime);
-
-			LoadEnemies();
-
-			player.Update(gameTime, enemies);
-
 			base.Update(gameTime);
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-<<<<<<< HEAD
             spriteBatch.Begin();
 
-            level.Draw(spriteBatch);
-            
+            map.Draw(spriteBatch);
+
             DrawEnemies();
 
             player.Draw(spriteBatch);
 
             toolBar.Draw(spriteBatch, player);
 
+            player.DrawPreview(spriteBatch, towerTexture);
+
             if (!gameStarted)
             {
                 spriteBatch.Draw(startGameSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
-            else
-            {
-            }
+
             if (gameOver)
             {
                 spriteBatch.Draw(gameOverSplash, new Rectangle(0, 0, (int)screenWidth, (int)screenHeight), Color.White);
             }
-=======
-            spriteBatch.Begin(); 
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
 
-            level.Draw(spriteBatch);
 
-<<<<<<< HEAD
+            spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
@@ -250,48 +167,64 @@ namespace MonoGame2D
 
         protected void LoadEnemies()
         {
-            if (spawn >= 3) // Respawns an enemy every second
-            {
+            if (spawn >= Constants.ENEMY_SPAWN_TIME) // Respawns an enemy each ENEMY_SPAWN_TIME
+			{
                 spawn = 0;
-                if (enemies.Count <= Contants.MAX_ENEMIES) // Limits the respawn
+                if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
                 {
-                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero, 100, 10, 1f);
-                    enemy.SetWaypoints(level.Waypoints);
+<<<<<<< Updated upstream
+                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
+                    enemy.SetWaypoints(map.GetWaypoints());
 
-                    enemies.Add(enemy);
+					enemies = enemies.Add(enemy);
+=======
+                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);                    
+                    Enemy outputValue = Enemy.randomize(enemy, map); //FIRST ORDER
+                    enemies.Add(outputValue);
+>>>>>>> Stashed changes
                 }
             }
         
-
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (enemies[i].IsOutOfScreen())
+                //var array = enemies;
+                if (enemies[i].GetOutOfScreen()) // Removes enemies out of screen
                 {
-                    enemies.RemoveAt(i);
+<<<<<<< Updated upstream
+					enemies = enemies.RemoveAt(i);
                     i--;
+=======
+                    enemies.RemoveAt(i);
+                    //string temp_value = DecrementHigherOrder(i).ToString();
+                    //i = Int32.Parse(temp_value);
+                    //i--;
+                    i = DecrementCurrying(i);
+>>>>>>> Stashed changes
 
-                    player.setLives(player.getLives() - 1);
-                    if (player.getLives() == 0)
+                    player.SetLives(player.GetLives() - 1); // If a enemie arrived at the end of the screen, player loses a life
+
+                    if (player.GetLives() == 0)
                     {
                         gameOver = true;
                     }
+                } else if (!enemies[i].GetAlive()) // Removes dead enemies
+				{
+<<<<<<< Updated upstream
+					enemies = enemies.RemoveAt(i);
+					i--;
+				}
+=======
+					enemies.RemoveAt(i);
+                    //string temp_value = DecrementHigherOrder(i).ToString();
+                    //i = Int32.Parse(temp_value);
+                    //i--;
+                    i = DecrementCurrying(i);
                 }
+>>>>>>> Stashed changes
             }
 
         }
-        protected void DrawLives()
-        {
-=======
-			DrawEnemies();
 
-			player.Draw(spriteBatch);
-
-			spriteBatch.End();
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
-
-            base.Draw(gameTime);
-        }
-<<<<<<< HEAD
         protected void UpdateEnemies(GameTime gameTime)
         {
             foreach (Enemy enemy in enemies)
@@ -310,7 +243,7 @@ namespace MonoGame2D
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             screenHeight = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Height);
             screenWidth = ScaleToHighDPI((float)ApplicationView.GetForCurrentView().VisibleBounds.Width);
-        }
+		}
 
         public float ScaleToHighDPI(float f)
         {
@@ -323,50 +256,36 @@ namespace MonoGame2D
         {
             gameStarted = true;
             gameOver = false;
-            player.setLives(Contants.MAX_LIVES);
-            player.setGold(Contants.MAX_GOLD);
-            enemies.Clear();
-=======
+            player.SetLives(Constants.PLAYER_START_LIFES);
+            player.SetGold(Constants.PLAYER_START_GOLD);
+			enemies = enemies.Clear();
+			player.ClearTowers();
+        }
 
-		protected void LoadEnemies()
-		{
-			if (spawn >= 3) // Respawns an enemy every second
-			{
-				spawn = 0;
-				if (enemies.Count <= Contants.MAX_ENEMIES) // Limits the respawn
-				{
-					Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero, 100, 10, 0.5f);
-					enemy.SetWaypoints(level.Waypoints);
+       protected void  tower_OnPress(object sender, EventArgs e)
+       {
 
-					enemies.Add(enemy);
-				}
-			}
+       }
+        protected void tower_OnClicked(object sender, EventArgs e)
+        {
 
-			for (int i = 0; i < enemies.Count; i++)
-			{
-				if (!enemies[i].IsAlive())
-				{
-					enemies.RemoveAt(i);
-					i--;
-				}					
-			}
+        }
+        internal static int DecrementCurrying(int i)
+        {
+            // int -> (int -> int) 
+            Func<int, Func<int, int>> higherOrderSubtract = a => new Func<int, int>(b => b - a);
+            Func<int, int> dec = higherOrderSubtract(1); // Equivalent to: b => b - a.
+            int curriedResult = dec(i);
 
-		}
+            return curriedResult;
+        }
 
-		protected void UpdateEnemies(GameTime gameTime)
-		{
-			foreach (Enemy enemy in enemies)
-				enemy.Update(gameTime);
+        internal static Func<int> DecrementHigherOrder(int i) //HIGHER ORDER WITH CURRYING, returns a function
+        {
+            Func<int, Func<int>> higherOrder3 = a =>(() => a - 1);
+            Func<int> output3 = higherOrder3(i); //returning a function here
 
-		}
-
-		protected void DrawEnemies()
-		{
-			foreach (Enemy enemy in enemies)
-				enemy.Draw(spriteBatch);
-		}
->>>>>>> bfd0dc95cdf9a2a577c995b4863a35bb2adbca78
-
+            return output3;
         }
     }
 }

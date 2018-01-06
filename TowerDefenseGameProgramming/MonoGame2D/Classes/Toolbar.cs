@@ -9,6 +9,7 @@ namespace MonoGame2D
 {
     public class Toolbar
     {
+        delegate void OnPassValue(string s);
         private Texture2D texture;
         // A class to access the font we created
         private SpriteFont font;
@@ -18,6 +19,7 @@ namespace MonoGame2D
         // The position of the text
         private Vector2 textPositionLives;
         private Vector2 textPositionGold;
+
 
         public Toolbar(Texture2D texture, SpriteFont font, Vector2 position)
         {
@@ -30,12 +32,18 @@ namespace MonoGame2D
             textPositionGold = new Vector2(position.X + 1050, position.Y + 90);
         }
 
+
         public void Draw(SpriteBatch spriteBatch, Player player)
         {
             spriteBatch.Draw(texture, position, Color.White);
-           
             string textLives = string.Format(">>> {0} <<<", player.GetLives());
             string textGold = string.Format(" {0} ", player.GetGold());
+
+            OnPassValue passValueLives = (x) => { textLives = string.Format(x, player.GetLives()); };
+            OnPassValue passValueGold = (x) => { textGold = string.Format(x, player.GetGold()); };
+
+            passValueLives(Constants.toolBarMessageLives); //Lambda expression with delegate
+            passValueGold(Constants.toolBarMessageGold);
             spriteBatch.DrawString(font, textLives, textPositionLives, Color.SaddleBrown);
             spriteBatch.DrawString(font, textGold, textPositionGold, Color.SaddleBrown);
         }

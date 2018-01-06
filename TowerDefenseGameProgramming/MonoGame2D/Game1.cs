@@ -169,9 +169,8 @@ namespace MonoGame2D
                 if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
                 {
                     Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
-                    enemy.SetWaypoints(map.GetWaypoints());
-
-					enemies = enemies.Add(enemy);
+                    Enemy outputValue = Enemy.setPath(enemy, map); //FIRST ORDER
+                    enemies = enemies.Add(outputValue);
                 }
             }
         
@@ -180,9 +179,12 @@ namespace MonoGame2D
                 if (enemies[i].GetOutOfScreen()) // Removes enemies out of screen
                 {
 					enemies = enemies.RemoveAt(i);
-                    i--;
+                    //string temp_value = DecrementHigherOrder(i).ToString();
+                    //i = Int32.Parse(temp_value);
+                    //i--;
+                    i = DecrementCurrying(i);
 
-					player.SetLives(player.GetLives() - 1); // If a enemie arrived at the end of the screen, player loses a life
+                    player.SetLives(player.GetLives() - 1); // If a enemie arrived at the end of the screen, player loses a life
 
                     if (player.GetLives() == 0)
                     {
@@ -191,8 +193,11 @@ namespace MonoGame2D
                 } else if (!enemies[i].GetAlive()) // Removes dead enemies
 				{
 					enemies = enemies.RemoveAt(i);
-					i--;
-				}
+                    //string temp_value = DecrementHigherOrder(i).ToString();
+                    //i = Int32.Parse(temp_value);
+                    //i--;
+                    i = DecrementCurrying(i);
+                }
             }
 
         }
@@ -242,6 +247,23 @@ namespace MonoGame2D
         {
 
         }
-        
+        internal static int DecrementCurrying(int i)
+        {
+            // int -> (int -> int) 
+            Func<int, Func<int, int>> higherOrderSubtract = a => new Func<int, int>(b => b - a);
+            Func<int, int> dec = higherOrderSubtract(1); // Equivalent to: b => b - a.
+            int curriedResult = dec(i);
+
+            return curriedResult;
+        }
+
+        internal static Func<int> DecrementHigherOrder(int i) //HIGHER ORDER WITH CURRYING, returns a function
+        {
+            Func<int, Func<int>> higherOrder3 = a => (() => a - 1);
+            Func<int> output3 = higherOrder3(i); //returning a function here
+
+            return output3;
+        }
+
     }
 }
