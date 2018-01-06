@@ -124,17 +124,17 @@ namespace MonoGame2D
 
 		public void ClearTowers()
 		{
-			towers.Clear();
+			towers = towers.Clear();
 		}
 
         public void DrawPreview(SpriteBatch spriteBatch, Texture2D towerTexture)
         {
             // Draw the tower preview.
-                int cellX = (int)(mouseState.X / 32); // Convert the position of the mouse
-                int cellY = (int)(mouseState.Y / 32); // from array space to level space
+                int cellX = (int)(mouseState.X / Constants.MAP_TILE_SIZE); // Convert the position of the mouse
+                int cellY = (int)(mouseState.Y / Constants.MAP_TILE_SIZE); // from array space to level space
 
-                int tileX = cellX * 32; // Convert from array space to level space
-                int tileY = cellY * 32; // Convert from array space to level space
+                int tileX = cellX * Constants.MAP_TILE_SIZE; // Convert from array space to level space
+                int tileY = cellY * Constants.MAP_TILE_SIZE; // Convert from array space to level space
 
             Texture2D previewTexture = towerTexture;
             spriteBatch.Draw(previewTexture, new Rectangle(tileX, tileY,

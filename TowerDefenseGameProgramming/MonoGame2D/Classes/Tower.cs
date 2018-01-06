@@ -45,12 +45,12 @@ namespace MonoGame2D
             this.cost = cost;
         }
 
-		public void GetDamage(int damage)
+		public void SetDamage(int damage)
 		{
 			this.damage = damage;
 		}
 
-		public void GetRadius(float radius)
+		public void SetRadius(float radius)
 		{
 			this.radius = radius;
 		}

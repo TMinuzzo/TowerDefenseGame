@@ -53,35 +53,35 @@ namespace MonoGame2D
 		public Map()
 		{
 			/* Add each point of enemy's path: position * tile size */
-			waypoints.Enqueue(new Vector2(0, 0) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(1, 0) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(2, 0) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(2, 1) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(3, 1) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(3, 2) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(4, 2) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(4, 4) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(3, 4) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(3, 5) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(2, 5) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(2, 7) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(8, 7) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(8, 3) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(10, 3) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(10, 5) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(12, 5) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(12, 2) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(14, 2) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(14, 3) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(16, 3) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(16, 5) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(17, 5) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(17, 6) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(18, 6) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(18, 7) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(20, 7) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(20, 6) * Constants.MAP_TILE_SIZE);
-			waypoints.Enqueue(new Vector2(21, 6) * Constants.MAP_TILE_SIZE);
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(0, 0)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(1, 0)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(2, 0)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(2, 1)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(3, 1)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(3, 2)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(4, 2)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(4, 4)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(3, 4)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(3, 5)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(2, 5)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(2, 7)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(8, 7)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(8, 3)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(10, 3)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(10, 5)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(12, 5)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(12, 2)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(14, 2)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(14, 3)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(16, 3)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(16, 5)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(17, 5)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(17, 6)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(18, 6)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(18, 7)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(20, 7)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(20, 6)));
+			waypoints.Enqueue(multiplyingByTileSize(new Vector2(21, 6)));
 		}
 
 		/* Others */
@@ -124,6 +124,13 @@ namespace MonoGame2D
 
             return mapMatrix[cellY, cellX];
         }
+
+		public Vector2 multiplyingByTileSize(Vector2 vector)
+		{
+			Vector2 multiplied = vector * Constants.MAP_TILE_SIZE;
+
+			return multiplied;
+		}
 
     }
 }

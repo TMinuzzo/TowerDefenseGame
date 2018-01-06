@@ -230,7 +230,7 @@ namespace MonoGame2D
             gameOver = false;
             player.SetLives(Constants.PLAYER_START_LIFES);
             player.SetGold(Constants.PLAYER_START_GOLD);
-            enemies.Clear();
+			enemies = enemies.Clear();
 			player.ClearTowers();
         }
 
