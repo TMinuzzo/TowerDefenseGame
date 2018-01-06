@@ -103,13 +103,10 @@ namespace MonoGame2D
 
             bool spaceClear = true;
 
-            foreach (Tower tower in towers) // Check that there is no tower here
-            {
-                spaceClear = (tower.GetPosition() != new Vector2(tileX, tileY));
+			List<Tower> filteredList = towers.Where(tower => tower.GetPosition() == new Vector2(tileX, tileY)).ToList();
 
-                if (!spaceClear)
-                    break;
-            }
+			if (filteredList.Count > 0)
+				spaceClear = false;
 
             /* Players only can put their towers in the grass */
             bool onGrass = (map.GetIndex(cellX, cellY) == 0);

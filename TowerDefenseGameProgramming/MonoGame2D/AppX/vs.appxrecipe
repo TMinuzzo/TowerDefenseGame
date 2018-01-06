@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-28T01:30:34.308</Modified>
+      <Modified>2018-01-06T01:44:55.199</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\MonoGame2D.exe">
       <PackagePath>entrypoint\MonoGame2D.exe</PackagePath>
-      <Modified>2017-12-28T01:30:33.791</Modified>
+      <Modified>2018-01-06T01:44:54.366</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -676,11 +676,11 @@
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-27T17:26:46.660</Modified>
+      <Modified>2018-01-06T01:38:38.920</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\pietr\Documents\CIC\MLP\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Core\MonoGame2D.exe">
       <PackagePath>MonoGame2D.exe</PackagePath>
-      <Modified>2017-12-28T01:30:34.303</Modified>
+      <Modified>2018-01-06T01:44:55.191</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
