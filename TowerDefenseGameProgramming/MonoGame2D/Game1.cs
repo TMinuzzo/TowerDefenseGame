@@ -17,7 +17,7 @@ namespace MonoGame2D
 
         List<Enemy> enemies = new List<Enemy>();
 
-        List<Texture2D> enemyTextures = new List<Texture2D>();
+		GenericList<Texture2D> enemyTextures = new GenericList<Texture2D>();
 
         Player player;
         Toolbar toolBar;
@@ -167,7 +167,9 @@ namespace MonoGame2D
                 spawn = 0;
                 if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
                 {
-                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
+					int enemyTexturesSize = enemyTextures.getSize();
+
+                    Enemy enemy = new Enemy(enemyTextures.getOnIndex(random.Next(0, enemyTexturesSize)), Vector2.Zero);
                     enemy.SetWaypoints(map.GetWaypoints());
 
                     enemies.Add(enemy);

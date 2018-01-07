@@ -28,5 +28,7 @@ namespace MonoGame2D
 		static public int ARROW_TOWER_RADIUS = 150;
         static public int ARROW_TOWER_COST = 15;
         static public int ARROW_TOWER_BULLET_SPEED = 4;
+
+		static public int ENEMIES_TEXTURES = 3;
 	}
 }

@@ -105,6 +105,7 @@
     <Compile Include="Classes\Bullet.cs" />
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\GenericList.cs" />
     <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Sprite.cs" />
