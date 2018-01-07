@@ -22,7 +22,7 @@ namespace MonoGame2D
 
         Player player;
         Toolbar toolBar;
-        Button button;
+        Configurations.Button button;
 
         float screenWidth;
         float screenHeight;
@@ -38,8 +38,8 @@ namespace MonoGame2D
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             startConfigScreen();
-            graphics.PreferredBackBufferWidth = map.Width * Constants.MAP_TILE_SIZE;
-            graphics.PreferredBackBufferHeight = 256 + map.Height * Constants.MAP_TILE_SIZE;
+            graphics.PreferredBackBufferWidth = map.Width * Configurations.Constants.MAP_TILE_SIZE;
+            graphics.PreferredBackBufferHeight = 256 + map.Height * Configurations.Constants.MAP_TILE_SIZE;
             //graphics.ApplyChanges();
         }
 
@@ -56,8 +56,8 @@ namespace MonoGame2D
 
             Texture2D topBar = Content.Load<Texture2D>("menu");
             SpriteFont font = Content.Load<SpriteFont>("GameState");
-            button = new Button(); //construtor alternativo de button 
-            toolBar = new Toolbar(topBar, font, new Vector2(0, map.Height * Constants.MAP_TILE_SIZE));
+            button = new Configurations.Button(); //Alternative Constructor
+            toolBar = new Toolbar(topBar, font, new Vector2(0, map.Height * Configurations.Constants.MAP_TILE_SIZE));
 
             startGameSplash = Content.Load<Texture2D>("start-splash");
             gameOverSplash = Content.Load<Texture2D>("GameOver");
@@ -163,12 +163,12 @@ namespace MonoGame2D
 
         protected void LoadEnemies()
         {
-            if (spawn >= Constants.ENEMY_SPAWN_TIME) // Respawns an enemy each ENEMY_SPAWN_TIME
+            if (spawn >= Configurations.Constants.ENEMY_SPAWN_TIME) // Respawns an enemy each ENEMY_SPAWN_TIME
 			{
                 spawn = 0;
-                if (enemies.Count <= Constants.MAX_ENEMIES) // Limits the respawn
+                if (enemies.Count <= Configurations.Constants.MAX_ENEMIES) // Limits the respawn
                 {
-                    Enemy enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
+                    object enemy = new Enemy(enemyTextures[random.Next(0, enemyTextures.Count)], Vector2.Zero);
                     Enemy outputValue = Enemy.setPath(enemy, map); //FIRST ORDER
                     enemies = enemies.Add(outputValue);
                 }
@@ -233,8 +233,8 @@ namespace MonoGame2D
         {
             gameStarted = true;
             gameOver = false;
-            player.SetLives(Constants.PLAYER_START_LIFES);
-            player.SetGold(Constants.PLAYER_START_GOLD);
+            player.SetLives(Configurations.Constants.PLAYER_START_LIFES);
+            player.SetGold(Configurations.Constants.PLAYER_START_GOLD);
 			enemies = enemies.Clear();
 			player.ClearTowers();
         }

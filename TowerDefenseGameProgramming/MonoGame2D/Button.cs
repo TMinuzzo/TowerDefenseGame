@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Windows.Graphics.Display;
 
-namespace MonoGame2D
+namespace Configurations
 {
     public enum ButtonStatus
     {
@@ -108,7 +108,7 @@ namespace MonoGame2D
 
                     if (OnPress != null)
                     {
-                        // Fire the OnPress event. //lembrar de signal slot
+                        // Fire the OnPress event.
                         OnPress(this, EventArgs.Empty);
                     }
                 }

@@ -12,8 +12,8 @@ namespace MonoGame2D
 		/* Attributes */
         public Queue<Vector2> waypoints = new Queue<Vector2>(); // Enemy's path
 
-		public float startHealth = Constants.ENEMY_START_HEALTH;
-        protected float speed = Constants.ENEMY_SPEED;
+		public float startHealth = Configurations.Constants.ENEMY_START_HEALTH;
+        protected float speed = Configurations.Constants.ENEMY_SPEED;
         internal delegate void Function();
 
         public float currentHealth;
@@ -152,10 +152,15 @@ namespace MonoGame2D
             }      
         }
 
-        public static Enemy setPath(Enemy functionValue, Map map)
+        public static Enemy setPath(object functionValue, Map map)
         {
-            functionValue.SetWaypoints(map.GetWaypoints());
-            return functionValue;
+            Enemy enemy = null;
+            if (functionValue is Enemy) //pattern matching
+            {
+                enemy = (Enemy)functionValue;
+                enemy.SetWaypoints(map.GetWaypoints());               
+            }
+            return enemy;
         }
     }
 }

@@ -13,8 +13,8 @@ namespace MonoGame2D
     public class Player
     {
 		/* Attributes */
-        protected int gold = Constants.PLAYER_START_GOLD;
-        protected int lives = Constants.PLAYER_START_LIFES;
+        protected int gold = Configurations.Constants.PLAYER_START_GOLD;
+        protected int lives = Configurations.Constants.PLAYER_START_LIFES;
 
         private ImmutableList<Tower> towers = ImmutableList.Create<Tower>();
 
@@ -67,11 +67,11 @@ namespace MonoGame2D
         {
             mouseState = Mouse.GetState();
 
-            cellX = (int)(mouseState.X / Constants.MAP_TILE_SIZE); // Convert the position of the mouse
-            cellY = (int)(mouseState.Y / Constants.MAP_TILE_SIZE); // from array space to level space
+            cellX = (int)(mouseState.X / Configurations.Constants.MAP_TILE_SIZE); // Convert the position of the mouse
+            cellY = (int)(mouseState.Y / Configurations.Constants.MAP_TILE_SIZE); // from array space to level space
 
-            tileX = cellX * Constants.MAP_TILE_SIZE; // Convert from array space to level space
-            tileY = cellY * Constants.MAP_TILE_SIZE; // Convert from array space to level space
+            tileX = cellX * Configurations.Constants.MAP_TILE_SIZE; // Convert from array space to level space
+            tileY = cellY * Configurations.Constants.MAP_TILE_SIZE; // Convert from array space to level space
 
             if (mouseState.LeftButton == ButtonState.Released
                 && oldState.LeftButton == ButtonState.Pressed)
@@ -130,11 +130,11 @@ namespace MonoGame2D
         public void DrawPreview(SpriteBatch spriteBatch, Texture2D towerTexture)
         {
             // Draw the tower preview.
-                int cellX = (int)(mouseState.X / Constants.MAP_TILE_SIZE); // Convert the position of the mouse
-                int cellY = (int)(mouseState.Y / Constants.MAP_TILE_SIZE); // from array space to level space
+                int cellX = (int)(mouseState.X / Configurations.Constants.MAP_TILE_SIZE); // Convert the position of the mouse
+                int cellY = (int)(mouseState.Y / Configurations.Constants.MAP_TILE_SIZE); // from array space to level space
 
-                int tileX = cellX * Constants.MAP_TILE_SIZE; // Convert from array space to level space
-                int tileY = cellY * Constants.MAP_TILE_SIZE; // Convert from array space to level space
+                int tileX = cellX * Configurations.Constants.MAP_TILE_SIZE; // Convert from array space to level space
+                int tileY = cellY * Configurations.Constants.MAP_TILE_SIZE; // Convert from array space to level space
 
             Texture2D previewTexture = towerTexture;
             spriteBatch.Draw(previewTexture, new Rectangle(tileX, tileY,

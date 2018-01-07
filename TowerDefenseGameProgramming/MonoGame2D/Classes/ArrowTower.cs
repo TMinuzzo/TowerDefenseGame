@@ -14,11 +14,11 @@ namespace MonoGame2D
         public ArrowTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.cost = Constants.ARROW_TOWER_COST;
-            this.damage = Constants.ARROW_TOWER_DAMAGE;
-            this.radius = Constants.ARROW_TOWER_RADIUS;
-			this.cost = Constants.ARROW_TOWER_COST;
-			this.bulletSpeed = Constants.ARROW_TOWER_BULLET_SPEED;
+            this.cost = Configurations.Constants.ARROW_TOWER_COST;
+            this.damage = Configurations.Constants.ARROW_TOWER_DAMAGE;
+            this.radius = Configurations.Constants.ARROW_TOWER_RADIUS;
+			this.cost = Configurations.Constants.ARROW_TOWER_COST;
+			this.bulletSpeed = Configurations.Constants.ARROW_TOWER_BULLET_SPEED;
         }
 
 		/* Others */

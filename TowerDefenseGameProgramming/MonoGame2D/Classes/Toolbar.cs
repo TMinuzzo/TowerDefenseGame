@@ -9,7 +9,9 @@ namespace MonoGame2D
 {
     public class Toolbar
     {
+        // A delegate to be used with the Lambda Functions
         delegate void OnPassValue(string s);
+
         private Texture2D texture;
         // A class to access the font we created
         private SpriteFont font;
@@ -42,8 +44,8 @@ namespace MonoGame2D
             OnPassValue passValueLives = (x) => { textLives = string.Format(x, player.GetLives()); };
             OnPassValue passValueGold = (x) => { textGold = string.Format(x, player.GetGold()); };
 
-            passValueLives(Constants.toolBarMessageLives); //Lambda expression with delegate
-            passValueGold(Constants.toolBarMessageGold);
+            passValueLives(Configurations.Constants.toolBarMessageLives); //Lambda expression with delegate
+            passValueGold(Configurations.Constants.toolBarMessageGold);   //Lambda 
             spriteBatch.DrawString(font, textLives, textPositionLives, Color.SaddleBrown);
             spriteBatch.DrawString(font, textGold, textPositionGold, Color.SaddleBrown);
         }

@@ -112,7 +112,7 @@ namespace MonoGame2D
 
                     Texture2D texture = tileTextures[textureIndex];
 
-                    batch.Draw(texture, new Rectangle(x * Constants.MAP_TILE_SIZE, y * Constants.MAP_TILE_SIZE, Constants.MAP_TILE_SIZE, Constants.MAP_TILE_SIZE), Color.White);
+                    batch.Draw(texture, new Rectangle(x * Configurations.Constants.MAP_TILE_SIZE, y * Configurations.Constants.MAP_TILE_SIZE, Configurations.Constants.MAP_TILE_SIZE, Configurations.Constants.MAP_TILE_SIZE), Color.White);
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace MonoGame2D
 
 		public Vector2 multiplyingByTileSize(Vector2 vector)
 		{
-			Vector2 multiplied = vector * Constants.MAP_TILE_SIZE;
+			Vector2 multiplied = vector * Configurations.Constants.MAP_TILE_SIZE;
 
 			return multiplied;
 		}

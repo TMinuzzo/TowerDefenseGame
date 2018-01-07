@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-01-06T23:53:43.465</Modified>
+      <Modified>2018-01-07T17:20:08.881</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\MonoGame2D.exe">
       <PackagePath>entrypoint\MonoGame2D.exe</PackagePath>
-      <Modified>2018-01-06T23:53:42.911</Modified>
+      <Modified>2018-01-07T17:20:08.326</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -597,11 +597,11 @@
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-01-06T23:34:53.877</Modified>
+      <Modified>2018-01-07T17:16:03.600</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\TesteClaw\Desktop\GIT\TowerDefenseGame\TowerDefenseGame\TowerDefenseGameProgramming\MonoGame2D\Core\MonoGame2D.exe">
       <PackagePath>MonoGame2D.exe</PackagePath>
-      <Modified>2018-01-06T23:53:43.450</Modified>
+      <Modified>2018-01-07T17:20:08.874</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

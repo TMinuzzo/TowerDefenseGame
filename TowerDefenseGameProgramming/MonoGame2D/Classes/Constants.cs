@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonoGame2D
+namespace Configurations
 {
 	class Constants
 	{
@@ -26,7 +26,7 @@ namespace MonoGame2D
 		/* ABOUT THE ARROW TOWER TOWER */
 		static public int ARROW_TOWER_DAMAGE = 50;
 		static public int ARROW_TOWER_RADIUS = 150;
-        static public int ARROW_TOWER_COST = 0;
+        static public int ARROW_TOWER_COST = 15;
         static public int ARROW_TOWER_BULLET_SPEED = 5;
 
         /* ABOUT THE MESSAGES */
